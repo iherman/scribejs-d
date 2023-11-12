@@ -1,0 +1,37 @@
+{
+  "tasks": {
+    "test": "deno run -A main.ts -j 'kd' -g epub -c test/config.json test/12-epub-irc.txt"
+  },
+  "compilerOptions": {
+    "lib": [
+      "deno.ns","dom"
+    ]
+  },
+  "imports": {
+    "./lib/io":         "./lib/io.ts",
+    "./lib/convert":    "./lib/convert.ts",
+    "./lib/conf":       "./lib/conf.ts",
+    "./lib/schemas":    "./lib/schemas.ts",
+    "./lib/rdf_to_log": "./lib/rdf_to_log.ts",
+    "./lib/types":      "./lib/types.ts",
+
+    "./schemas":        "./schemas.ts",
+    "./front_matter":   "./front_matter.ts",
+    "./utils":          "./utils.ts",
+    "./actions":        "./actions.ts",
+    "./types":          "./types.ts",
+    "./issues":         "./issues.ts",
+    "./js/githubapi":   "./js/githubapi.js",
+
+    "../types":         "../types.ts",
+
+    "commander":        "npm:commander",
+    "valid-url":        "npm:valid-url",
+    "xml2js":           "npm:xml2js",
+    "octocat":          "npm:octocat",
+
+    "url":              "node:url",
+    "path":             "node:path",
+    "fs":               "node:fs"
+  }
+}

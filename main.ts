@@ -11,12 +11,12 @@
 
 import { ValidationError } from 'npm:@exodus/schemasafe';
 
-import * as io      from './lib/io';
-import * as convert from './lib/convert';
-import * as conf    from './lib/conf';
-import * as schemas from './lib/schemas';
-import * as rdf     from './lib/rdf_to_log';
-import { Global }   from './lib/types';
+import * as io      from './lib/io.ts';
+import * as convert from './lib/convert.ts';
+import * as conf    from './lib/conf.ts';
+import * as schemas from './lib/schemas.ts';
+import * as rdf     from './lib/rdf_to_log.ts';
+import { Global }   from './lib/types.ts';
 
 /* This is just the overall driver of the script... */
 

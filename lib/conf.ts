@@ -8,12 +8,11 @@
 * Get the arguments and/or configuration file
 */
 import * as path                            from "https://deno.land/std/path/mod.ts";
-// @deno-types="npm:@types/commander"
 import { Command }                          from 'npm:commander';
 import { ValidationError }                  from 'npm:@exodus/schemasafe';
 import * as schemas                         from './schemas.ts';
 import * as utils                           from './utils.ts';
-import { Configuration, Global, Constants } from './types';
+import { Configuration, Global, Constants } from './types.ts';
 
 /** Initial value for the final configuration. The values are overwritten by other possible configuration files and command line arguments. */
 const default_config: Global = {
@@ -162,11 +161,11 @@ export function get_config(call_args: string[]): Global {
     const HOME = Deno.env.get("HOME");
 
     // Third step: see if there is user ghid file file
-    const gh_id = (HOME) ? json_conf_file(path.join(HOME, Constants.user_ghid_file), program.group, local, false) : {};
+    const gh_id = (HOME) ? json_conf_file(path.join(HOME, Constants.user_ghid_file), options.group, local, false) : {};
 
     /** ******************************************************************** */
     // Fourth step: see if there is user level config file
-    const user_config = (HOME) ? json_conf_file(path.join(HOME, Constants.user_config_name), program.group, local, false) : {};
+    const user_config = (HOME) ? json_conf_file(path.join(HOME, Constants.user_config_name), options.group, local, false) : {};
 
     /** ******************************************************************** */
     // Fifth step: combine the configuration in increasing priority order, yielding the raw return value

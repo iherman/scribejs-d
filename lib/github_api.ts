@@ -45,10 +45,10 @@ export class GitHub {
     /**
      * Create a new (markdown) entry on the repository.
      *
-     * @param {string} data - data to be uploaded as a separate file
+     * @param {any} data - data returned from github (usable for debug);
      * @async
      */
-    async commit_data(data: string): Promise<string> {
+    async commit_data(data: string): Promise<any> {
         const path             = `${this.conf.ghpath}/${this.conf.ghfname}`;
         const response = (await this.octokit.createOrUpdateTextFile({
             path: path,
@@ -56,8 +56,12 @@ export class GitHub {
             message: "Created by scribejs",
             branch: this.conf.ghbranch || '',
             ...this.repo
-        })).data.html_url;
-        return response;
+        }));
+        if (response) {
+            return response
+        } else {
+            return {};
+        }
     }
 
     /**
@@ -112,7 +116,7 @@ export class GitHub {
         try {
             const info = await this.get_issue_info(issue_number);
             return info.title
-        } catch (e) {
+        } catch (_e) {
             return "";
         }
     }

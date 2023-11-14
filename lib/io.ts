@@ -16,7 +16,6 @@ import * as url                                          from 'node:url';
 import * as validUrl                                     from 'npm:valid-url';
 import { GitHub }                                        from './github_api.ts';
 import { Configuration, PersonWithNickname, Constants }  from './types.ts';
-import * as utils                                        from './utils.ts';
 
 
 /**
@@ -191,10 +190,11 @@ export async function get_nick_mapping(conf: Configuration): Promise<PersonWithN
  *
  * @param data - the markdown file to be uploaded
  * @param conf - the configuration containing the necessary data for upload.
- * @returns the returned promise data is the URL of the content; its only use is for debug
+ * @returns the returned promise data; its only use is for debug
  * @async
  */
-async function commit(data: string, conf: Configuration): Promise<string> {
+// deno-lint-ignore no-explicit-any
+async function commit(data: string, conf: Configuration): Promise<any> {
     if (conf.ghrepo === undefined) {
         throw new Error(`Attempt to commit without a valid gh repository nae`)
     } else {

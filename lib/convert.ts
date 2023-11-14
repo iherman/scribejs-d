@@ -352,7 +352,7 @@ ${no_toc}
                     this.global.action_list.add_action(`${id}`, message, name, ghname);
                 }
             } else {
-                console.log(`Warning: incorrect action syntax used: ${words}`);
+                console.warn(`Warning: incorrect action syntax used: ${words}`);
             }
             return retval;
         };

@@ -45,7 +45,7 @@ export class Actions {
         if (this.repo_name && conf.ghname && conf.ghtoken) {
             this.valid = true;
         } else {
-            console.log('Action setup data missing. Provide acrepo, ghname, and ghtoken');
+            console.warn('Action setup data missing. Provide acrepo, ghname, and ghtoken');
         }
     }
 

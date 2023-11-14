@@ -110,7 +110,7 @@ export function get_config(call_args: string[]): Global {
     const program = new Command();
     const argument_config: Configuration = {};
     program
-        .name('scribejs')
+        .name('scribejs-d')
         .description('Converting RSSAgent IRC logs into minutes in markdown.')
         .usage('[options] [file]')
         .option('-d, --date [date]', 'date of the meeting in ISO (i.e., YYYY-MM-DD) format')

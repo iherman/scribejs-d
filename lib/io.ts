@@ -209,7 +209,7 @@ async function commit(data: string, conf: Configuration): Promise<any> {
  *
  * @param  minutes - the markdown data to be uploaded
  * @param conf - the configuration containing additional data
- * @returns the returned promise data with the file name or URL of the generated minutes
+ * @returns the returned promise data with the file name or URL of the generated minutes (for debug purposes)
  * @async
  */
 export async function output_minutes(minutes: string, conf: Configuration): Promise<string> {

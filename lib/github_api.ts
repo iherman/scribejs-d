@@ -1,31 +1,27 @@
-// deno-lint-ignore-file require-await no-explicit-any
-'use strict';
-
+// deno-lint-ignore-file no-explicit-any
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 
 import { Octokit }                from 'https://esm.sh/octokit?dts';
 import { createOrUpdateTextFile } from 'https://esm.sh/@octokit/plugin-create-or-update-text-file';
 import { Configuration }          from './types.ts';
 
-interface Repo {
-    owner: string,
-    repo: string
-};
-
-
 /**
- * Wrapper around a the Github API using the generic octokit library.
+ * Wrapper around a the Github API using the generic [octokit library](https://github.com/octokit/octokit.js).
+ * It only includes shortcut methods for what is used in the package.
+ * 
+ * Note that for [uploading content to a repository](#method_commit_data_0), a separate 
+ * [plugin to the octokit library](https://github.com/octokit/plugin-create-or-update-text-file.js) is also used.
  *
  */
 export class GitHub {
     private readonly octokit;
-    // private readonly owner:   string;
-    // private readonly repo:    string;
-    private readonly conf: Configuration;
-    readonly repo: Repo;
+     private readonly conf: Configuration;
+    readonly repo: {owner: string, repo: string};
 
     /**
-     * Cache of the issue information structures; using this avoids unnecessary and repeated API calls for issue information
+     * Cache of the issue information structures; using this avoids unnecessary and repeated API calls for issue information.
+     * At first call to the [`get_issues`](#method_get_issues_0) downloads and stores the information on issues locally, and
+     * is reused in subsequent calls. This avoids unnecessary and repeated HTTPS access to the real repository.
      */
     private issue_infos: any[] = [];
 
@@ -44,8 +40,10 @@ export class GitHub {
 
     /**
      * Create a new (markdown) entry on the repository.
+     * 
+     * This methods uses the 
      *
-     * @param {any} data - data returned from github (usable for debug);
+     * @param {any} data - data returned from GitHub API (usable for debug);
      * @async
      */
     async commit_data(data: string): Promise<any> {
@@ -66,9 +64,9 @@ export class GitHub {
 
     /**
      * Get the list of issue structures as returned by the github API. Note that this method
-     * makes use of the class variable `issues_infos` as a cache.
+     * makes use of the class variable [`issues_infos`](#property_issue_infos) as a cache.
      *
-     * This method takes care of paging to get all the issues.
+     * The method takes care of paging to get all the (open) issues and PRs.
      *
      * @returns - array of objects
      * @async
@@ -96,7 +94,8 @@ export class GitHub {
 
     /**
      * Get the data for a single issue
-     * @param {string|number} issue_number - Issue number
+     * 
+     * @param issue_number - issue number
      * @return - the specific issue structure, or undefined
      * @async
      */
@@ -106,10 +105,10 @@ export class GitHub {
     }
 
     /**
-     * Get the title for a single issue
+     * Get the title for a single issue.
      *
-     * @param {string|number} issue_number - Issue number
-     * @return {string} - title of the issue, or empty string if issue number is invalid
+     * @param issue_number - issue number
+     * @return - title of the issue, or empty string if issue number is invalid
      * @async
      */
     async get_issue_title(issue_number: string|number): Promise<string> {
@@ -122,7 +121,7 @@ export class GitHub {
     }
 
     /**
-     * Get the list of assignees' logins. The method takes care of paging.
+     * Get the list of assignees' GitHub IDs. The method takes care of paging.
      *
      * @return - list of github login names for the assignees
      * @async
@@ -137,8 +136,10 @@ export class GitHub {
 
     /**
      * Create a new issue.
+     * 
+     * (Currently unused.)
      *
-     * @param {Object} issue - issue structure (see the Github API for details)
+     * @param issue - issue structure (see the Github API for details)
      * @async
      */
     async create_issue(issue: any): Promise<void> {

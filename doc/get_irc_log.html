@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>get_irc_log - Scribejs documentation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="doc-current-symbol" content="get_irc_log">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+#function_get_irc_log_0 {
+  display: none;
+}
+#function_get_irc_log_0:checked ~ *:last-child > :not(#function_get_irc_log_0_div) {
+  display: none;
+}
+#function_get_irc_log_0:checked ~ div:first-of-type > label[for='function_get_irc_log_0'] {
+  background-color: #056CF00C;
+  border: solid 2px rgb(37 99 235);
+  cursor: unset;
+}
+#function_get_irc_log_0:checked ~ div:first-of-type > label[for='function_get_irc_log_0'] > code {
+  margin: -1px;
+}
+</style>
+</head>
+<body>
+
+
+<nav id="sidepanel">
+    <h2><a href="index.html"><span>Scribejs</span></a></h2>
+    
+        <div class="section_title"><div class="symbol_kind kind_Class_text kind_Class_bg" title="Class">
+  c
+</div>
+<h3 class="kind_Class_text">Classes</h3></div>
+        <ul>
+        
+            <li>
+                <a href="Actions.html" title="Actions" class=""><span><code>Actions</code></span></a>
+            </li>
+        
+            <li>
+                <a href="Converter.html" title="Converter" class=""><span><code>Converter</code></span></a>
+            </li>
+        
+            <li>
+                <a href="GitHub.html" title="GitHub" class=""><span><code>GitHub</code></span></a>
+            </li>
+        
+            <li>
+                <a href="GitHubCache.html" title="GitHubCache" class=""><span><code>GitHubCache</code></span></a>
+            </li>
+        
+        </ul>
+    
+        <div class="section_title"><div class="symbol_kind kind_Function_text kind_Function_bg" title="Function">
+  f
+</div>
+<h3 class="kind_Function_text">Functions</h3></div>
+        <ul>
+        
+            <li>
+                <a href="add_links.html" title="add_links" class=""><span><code>add_links</code></span></a>
+            </li>
+        
+            <li>
+                <a href="canonical_nick.html" title="canonical_nick" class=""><span><code>canonical_nick</code></span></a>
+            </li>
+        
+            <li>
+                <a href="check_url.html" title="check_url" class=""><span><code>check_url</code></span></a>
+            </li>
+        
+            <li>
+                <a href="cleanup.html" title="cleanup" class=""><span><code>cleanup</code></span></a>
+            </li>
+        
+            <li>
+                <a href="commit.html" title="commit" class=""><span><code>commit</code></span></a>
+            </li>
+        
+            <li>
+                <a href="convert_rdf.html" title="convert_rdf" class=""><span><code>convert_rdf</code></span></a>
+            </li>
+        
+            <li>
+                <a href="difference.html" title="difference" class=""><span><code>difference</code></span></a>
+            </li>
+        
+            <li>
+                <a href="every.html" title="every" class=""><span><code>every</code></span></a>
+            </li>
+        
+            <li>
+                <a href="fetch_text.html" title="fetch_text" class=""><span><code>fetch_text</code></span></a>
+            </li>
+        
+            <li>
+                <a href="flatten.html" title="flatten" class=""><span><code>flatten</code></span></a>
+            </li>
+        
+            <li>
+                <a href="generate_front_matter.html" title="generate_front_matter" class=""><span><code>generate_front_matter</code></span></a>
+            </li>
+        
+            <li>
+                <a href="generate_metadata.html" title="generate_metadata" class=""><span><code>generate_metadata</code></span></a>
+            </li>
+        
+            <li>
+                <a href="get_config.html" title="get_config" class=""><span><code>get_config</code></span></a>
+            </li>
+        
+            <li>
+                <a href="get_irc_log.html" title="get_irc_log" class=""><span><code>get_irc_log</code></span></a>
+            </li>
+        
+            <li>
+                <a href="get_label.html" title="get_label" class=""><span><code>get_label</code></span></a>
+            </li>
+        
+            <li>
+                <a href="get_name_list.html" title="get_name_list" class=""><span><code>get_name_list</code></span></a>
+            </li>
+        
+            <li>
+                <a href="get_nick_mapping.html" title="get_nick_mapping" class=""><span><code>get_nick_mapping</code></span></a>
+            </li>
+        
+            <li>
+                <a href="handle_scribejs.html" title="handle_scribejs" class=""><span><code>handle_scribejs</code></span></a>
+            </li>
+        
+            <li>
+                <a href="issue_directives.html" title="issue_directives" class=""><span><code>issue_directives</code></span></a>
+            </li>
+        
+            <li>
+                <a href="json_conf_file.html" title="json_conf_file" class=""><span><code>json_conf_file</code></span></a>
+            </li>
+        
+            <li>
+                <a href="output_minutes.html" title="output_minutes" class=""><span><code>output_minutes</code></span></a>
+            </li>
+        
+            <li>
+                <a href="perform_change_requests.html" title="perform_change_requests" class=""><span><code>perform_change_requests</code></span></a>
+            </li>
+        
+            <li>
+                <a href="perform_insert_requests.html" title="perform_insert_requests" class=""><span><code>perform_insert_requests</code></span></a>
+            </li>
+        
+            <li>
+                <a href="remove_preamble.html" title="remove_preamble" class=""><span><code>remove_preamble</code></span></a>
+            </li>
+        
+            <li>
+                <a href="run.html" title="run" class=""><span><code>run</code></span></a>
+            </li>
+        
+            <li>
+                <a href="separate_header.html" title="separate_header" class=""><span><code>separate_header</code></span></a>
+            </li>
+        
+            <li>
+                <a href="set_input_url.html" title="set_input_url" class=""><span><code>set_input_url</code></span></a>
+            </li>
+        
+            <li>
+                <a href="split_to_words.html" title="split_to_words" class=""><span><code>split_to_words</code></span></a>
+            </li>
+        
+            <li>
+                <a href="titles.html" title="titles" class=""><span><code>titles</code></span></a>
+            </li>
+        
+            <li>
+                <a href="union.html" title="union" class=""><span><code>union</code></span></a>
+            </li>
+        
+            <li>
+                <a href="uniq.html" title="uniq" class=""><span><code>uniq</code></span></a>
+            </li>
+        
+            <li>
+                <a href="url_sanity_check.html" title="url_sanity_check" class=""><span><code>url_sanity_check</code></span></a>
+            </li>
+        
+            <li>
+                <a href="url_to_issue_directive.html" title="url_to_issue_directive" class=""><span><code>url_to_issue_directive</code></span></a>
+            </li>
+        
+            <li>
+                <a href="zip.html" title="zip" class=""><span><code>zip</code></span></a>
+            </li>
+        
+        </ul>
+    
+        <div class="section_title"><div class="symbol_kind kind_Interface_text kind_Interface_bg" title="Interface">
+  I
+</div>
+<h3 class="kind_Interface_text">Interfaces</h3></div>
+        <ul>
+        
+            <li>
+                <a href="Action.html" title="Action" class=""><span><code>Action</code></span></a>
+            </li>
+        
+            <li>
+                <a href="Configuration.html" title="Configuration" class=""><span><code>Configuration</code></span></a>
+            </li>
+        
+            <li>
+                <a href="GH_Cache.html" title="GH_Cache" class=""><span><code>GH_Cache</code></span></a>
+            </li>
+        
+            <li>
+                <a href="Global.html" title="Global" class=""><span><code>Global</code></span></a>
+            </li>
+        
+            <li>
+                <a href="Header.html" title="Header" class=""><span><code>Header</code></span></a>
+            </li>
+        
+            <li>
+                <a href="IssueInformation.html" title="IssueInformation" class=""><span><code>IssueInformation</code></span></a>
+            </li>
+        
+            <li>
+                <a href="IssueReference.html" title="IssueReference" class=""><span><code>IssueReference</code></span></a>
+            </li>
+        
+            <li>
+                <a href="LineObject.html" title="LineObject" class=""><span><code>LineObject</code></span></a>
+            </li>
+        
+            <li>
+                <a href="NicknameMapping.html" title="NicknameMapping" class=""><span><code>NicknameMapping</code></span></a>
+            </li>
+        
+            <li>
+                <a href="Person.html" title="Person" class=""><span><code>Person</code></span></a>
+            </li>
+        
+            <li>
+                <a href="PersonWithNickname.html" title="PersonWithNickname" class=""><span><code>PersonWithNickname</code></span></a>
+            </li>
+        
+            <li>
+                <a href="Resolution.html" title="Resolution" class=""><span><code>Resolution</code></span></a>
+            </li>
+        
+        </ul>
+    
+        <div class="section_title"><div class="symbol_kind kind_Namespace_text kind_Namespace_bg" title="Namespace">
+  N
+</div>
+<h3 class="kind_Namespace_text">Namespaces</h3></div>
+        <ul>
+        
+            <li>
+                <a href="Constants.html" title="Constants" class=""><span><code>Constants</code></span></a>
+            </li>
+        
+        </ul>
+    
+        <div class="section_title"><div class="symbol_kind kind_Variable_text kind_Variable_bg" title="Variable">
+  v
+</div>
+<h3 class="kind_Variable_text">Variables</h3></div>
+        <ul>
+        
+            <li>
+                <a href="default_config.html" title="default_config" class=""><span><code>default_config</code></span></a>
+            </li>
+        
+            <li>
+                <a href="is_browser.html" title="is_browser" class=""><span><code>is_browser</code></span></a>
+            </li>
+        
+            <li>
+                <a href="today.html" title="today" class=""><span><code>today</code></span></a>
+            </li>
+        
+            <li>
+                <a href="validate_config.html" title="validate_config" class=""><span><code>validate_config</code></span></a>
+            </li>
+        
+            <li>
+                <a href="validate_nicknames.html" title="validate_nicknames" class=""><span><code>validate_nicknames</code></span></a>
+            </li>
+        
+        </ul>
+    
+</nav>
+
+
+<div id="content">
+  <a href="./index.html">&#8592; Back to index</a>
+  
+<input type="text" id="searchbar" style="display: none;" />
+
+
+  <main class="symbol_group" id="symbol_get_irc_log">
+  
+    <article class="symbol">
+      <div class="symbol_header">
+        <div class="doc_block_title">
+          <div>
+            <span class="kind_Function_text">function</span>&nbsp;<span style="font-weight: 700;">get_irc_log</span>
+          </div>
+          
+        </div>
+      </div>
+      <div>
+        <div class="doc_block_items"><input type="radio" name="function_get_irc_log" id="function_get_irc_log_0" checked /><div class="function_overload_selectors"><label for="function_get_irc_log_0" class="function_overload_label">
+    <code>
+      <span style="font-weight: 700;">get_irc_log</span><span style="font-weight: 500;">(<span><span>conf<span>: <a href="./Configuration.html" class="link">Configuration</a></span></span></span>): <span>Promise</span>&lt;<span>string</span>&gt;</span>
+    </code>
+    
+</label></div><div><div class="doc_block_items" id="function_get_irc_log_0_div"><div class="markdown"><p>Get the IRC log. The input reference provided in the configuration (i.e., <code>conf.input</code>) is examined
+whether it is a URL (in which case this is retrieved via HTTP) or not (in which case
+it is considered to be a local file). Returns a Promise with the content
+of the input as single string.</p>
+</div><div><h2 class="section_title" id="Parameters"><a href="#Parameters" aria-label="Anchor">Parameters</a></h2><div class="section">
+    <div class="doc_item" id="function_get_irc_log_0_parameters_conf">
+      <a
+      href="#function_get_irc_log_0_parameters_conf"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">conf</span><span style="font-weight: 500;">: <a href="./Configuration.html" class="link">Configuration</a></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><ul>
+<li>overall configuration; the only field that matters here is <code>conf.input</code>.</li>
+</ul>
+</div>
+    </div>
+   </div></div><div><h2 class="section_title" id="Return Type"><a href="#Return Type" aria-label="Anchor">Return Type</a></h2><div class="section">
+    <div class="doc_item" id="function_get_irc_log_0_return">
+      <a
+      href="#function_get_irc_log_0_return"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;"></span><span style="font-weight: 500;"><span>Promise</span>&lt;<span>string</span>&gt;</span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>a promise containing the irc log as a single string.</p>
+</div>
+    </div>
+   </div></div></div></div></div>
+      </div>
+    </article>
+  
+</main>
+
+  <div id="searchResults"></div>
+</div>
+
+</body>
+<script src="./search_index.js" defer></script>
+<script src="./fuse.js" defer></script>
+<script src="./search.js" defer></script>
+</html>

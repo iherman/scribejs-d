@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Configuration - Scribejs documentation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="doc-current-symbol" content="Configuration">
+  <link rel="stylesheet" href="./styles.css">
+  <style></style>
+</head>
+<body>
+
+
+<nav id="sidepanel">
+    <h2><a href="index.html"><span>Scribejs</span></a></h2>
+    
+        <div class="section_title"><div class="symbol_kind kind_Class_text kind_Class_bg" title="Class">
+  c
+</div>
+<h3 class="kind_Class_text">Classes</h3></div>
+        <ul>
+        
+            <li>
+                <a href="Actions.html" title="Actions" class=""><span><code>Actions</code></span></a>
+            </li>
+        
+            <li>
+                <a href="Converter.html" title="Converter" class=""><span><code>Converter</code></span></a>
+            </li>
+        
+            <li>
+                <a href="GitHub.html" title="GitHub" class=""><span><code>GitHub</code></span></a>
+            </li>
+        
+            <li>
+                <a href="GitHubCache.html" title="GitHubCache" class=""><span><code>GitHubCache</code></span></a>
+            </li>
+        
+        </ul>
+    
+        <div class="section_title"><div class="symbol_kind kind_Function_text kind_Function_bg" title="Function">
+  f
+</div>
+<h3 class="kind_Function_text">Functions</h3></div>
+        <ul>
+        
+            <li>
+                <a href="add_links.html" title="add_links" class=""><span><code>add_links</code></span></a>
+            </li>
+        
+            <li>
+                <a href="canonical_nick.html" title="canonical_nick" class=""><span><code>canonical_nick</code></span></a>
+            </li>
+        
+            <li>
+                <a href="check_url.html" title="check_url" class=""><span><code>check_url</code></span></a>
+            </li>
+        
+            <li>
+                <a href="cleanup.html" title="cleanup" class=""><span><code>cleanup</code></span></a>
+            </li>
+        
+            <li>
+                <a href="commit.html" title="commit" class=""><span><code>commit</code></span></a>
+            </li>
+        
+            <li>
+                <a href="convert_rdf.html" title="convert_rdf" class=""><span><code>convert_rdf</code></span></a>
+            </li>
+        
+            <li>
+                <a href="difference.html" title="difference" class=""><span><code>difference</code></span></a>
+            </li>
+        
+            <li>
+                <a href="every.html" title="every" class=""><span><code>every</code></span></a>
+            </li>
+        
+            <li>
+                <a href="fetch_text.html" title="fetch_text" class=""><span><code>fetch_text</code></span></a>
+            </li>
+        
+            <li>
+                <a href="flatten.html" title="flatten" class=""><span><code>flatten</code></span></a>
+            </li>
+        
+            <li>
+                <a href="generate_front_matter.html" title="generate_front_matter" class=""><span><code>generate_front_matter</code></span></a>
+            </li>
+        
+            <li>
+                <a href="generate_metadata.html" title="generate_metadata" class=""><span><code>generate_metadata</code></span></a>
+            </li>
+        
+            <li>
+                <a href="get_config.html" title="get_config" class=""><span><code>get_config</code></span></a>
+            </li>
+        
+            <li>
+                <a href="get_irc_log.html" title="get_irc_log" class=""><span><code>get_irc_log</code></span></a>
+            </li>
+        
+            <li>
+                <a href="get_label.html" title="get_label" class=""><span><code>get_label</code></span></a>
+            </li>
+        
+            <li>
+                <a href="get_name_list.html" title="get_name_list" class=""><span><code>get_name_list</code></span></a>
+            </li>
+        
+            <li>
+                <a href="get_nick_mapping.html" title="get_nick_mapping" class=""><span><code>get_nick_mapping</code></span></a>
+            </li>
+        
+            <li>
+                <a href="handle_scribejs.html" title="handle_scribejs" class=""><span><code>handle_scribejs</code></span></a>
+            </li>
+        
+            <li>
+                <a href="issue_directives.html" title="issue_directives" class=""><span><code>issue_directives</code></span></a>
+            </li>
+        
+            <li>
+                <a href="json_conf_file.html" title="json_conf_file" class=""><span><code>json_conf_file</code></span></a>
+            </li>
+        
+            <li>
+                <a href="output_minutes.html" title="output_minutes" class=""><span><code>output_minutes</code></span></a>
+            </li>
+        
+            <li>
+                <a href="perform_change_requests.html" title="perform_change_requests" class=""><span><code>perform_change_requests</code></span></a>
+            </li>
+        
+            <li>
+                <a href="perform_insert_requests.html" title="perform_insert_requests" class=""><span><code>perform_insert_requests</code></span></a>
+            </li>
+        
+            <li>
+                <a href="remove_preamble.html" title="remove_preamble" class=""><span><code>remove_preamble</code></span></a>
+            </li>
+        
+            <li>
+                <a href="run.html" title="run" class=""><span><code>run</code></span></a>
+            </li>
+        
+            <li>
+                <a href="separate_header.html" title="separate_header" class=""><span><code>separate_header</code></span></a>
+            </li>
+        
+            <li>
+                <a href="set_input_url.html" title="set_input_url" class=""><span><code>set_input_url</code></span></a>
+            </li>
+        
+            <li>
+                <a href="split_to_words.html" title="split_to_words" class=""><span><code>split_to_words</code></span></a>
+            </li>
+        
+            <li>
+                <a href="titles.html" title="titles" class=""><span><code>titles</code></span></a>
+            </li>
+        
+            <li>
+                <a href="union.html" title="union" class=""><span><code>union</code></span></a>
+            </li>
+        
+            <li>
+                <a href="uniq.html" title="uniq" class=""><span><code>uniq</code></span></a>
+            </li>
+        
+            <li>
+                <a href="url_sanity_check.html" title="url_sanity_check" class=""><span><code>url_sanity_check</code></span></a>
+            </li>
+        
+            <li>
+                <a href="url_to_issue_directive.html" title="url_to_issue_directive" class=""><span><code>url_to_issue_directive</code></span></a>
+            </li>
+        
+            <li>
+                <a href="zip.html" title="zip" class=""><span><code>zip</code></span></a>
+            </li>
+        
+        </ul>
+    
+        <div class="section_title"><div class="symbol_kind kind_Interface_text kind_Interface_bg" title="Interface">
+  I
+</div>
+<h3 class="kind_Interface_text">Interfaces</h3></div>
+        <ul>
+        
+            <li>
+                <a href="Action.html" title="Action" class=""><span><code>Action</code></span></a>
+            </li>
+        
+            <li>
+                <a href="Configuration.html" title="Configuration" class=""><span><code>Configuration</code></span></a>
+            </li>
+        
+            <li>
+                <a href="GH_Cache.html" title="GH_Cache" class=""><span><code>GH_Cache</code></span></a>
+            </li>
+        
+            <li>
+                <a href="Global.html" title="Global" class=""><span><code>Global</code></span></a>
+            </li>
+        
+            <li>
+                <a href="Header.html" title="Header" class=""><span><code>Header</code></span></a>
+            </li>
+        
+            <li>
+                <a href="IssueInformation.html" title="IssueInformation" class=""><span><code>IssueInformation</code></span></a>
+            </li>
+        
+            <li>
+                <a href="IssueReference.html" title="IssueReference" class=""><span><code>IssueReference</code></span></a>
+            </li>
+        
+            <li>
+                <a href="LineObject.html" title="LineObject" class=""><span><code>LineObject</code></span></a>
+            </li>
+        
+            <li>
+                <a href="NicknameMapping.html" title="NicknameMapping" class=""><span><code>NicknameMapping</code></span></a>
+            </li>
+        
+            <li>
+                <a href="Person.html" title="Person" class=""><span><code>Person</code></span></a>
+            </li>
+        
+            <li>
+                <a href="PersonWithNickname.html" title="PersonWithNickname" class=""><span><code>PersonWithNickname</code></span></a>
+            </li>
+        
+            <li>
+                <a href="Resolution.html" title="Resolution" class=""><span><code>Resolution</code></span></a>
+            </li>
+        
+        </ul>
+    
+        <div class="section_title"><div class="symbol_kind kind_Namespace_text kind_Namespace_bg" title="Namespace">
+  N
+</div>
+<h3 class="kind_Namespace_text">Namespaces</h3></div>
+        <ul>
+        
+            <li>
+                <a href="Constants.html" title="Constants" class=""><span><code>Constants</code></span></a>
+            </li>
+        
+        </ul>
+    
+        <div class="section_title"><div class="symbol_kind kind_Variable_text kind_Variable_bg" title="Variable">
+  v
+</div>
+<h3 class="kind_Variable_text">Variables</h3></div>
+        <ul>
+        
+            <li>
+                <a href="default_config.html" title="default_config" class=""><span><code>default_config</code></span></a>
+            </li>
+        
+            <li>
+                <a href="is_browser.html" title="is_browser" class=""><span><code>is_browser</code></span></a>
+            </li>
+        
+            <li>
+                <a href="today.html" title="today" class=""><span><code>today</code></span></a>
+            </li>
+        
+            <li>
+                <a href="validate_config.html" title="validate_config" class=""><span><code>validate_config</code></span></a>
+            </li>
+        
+            <li>
+                <a href="validate_nicknames.html" title="validate_nicknames" class=""><span><code>validate_nicknames</code></span></a>
+            </li>
+        
+        </ul>
+    
+</nav>
+
+
+<div id="content">
+  <a href="./index.html">&#8592; Back to index</a>
+  
+<input type="text" id="searchbar" style="display: none;" />
+
+
+  <main class="symbol_group" id="symbol_Configuration">
+  
+    <article class="symbol">
+      <div class="symbol_header">
+        <div class="doc_block_title">
+          <div>
+            <span class="kind_Interface_text">interface</span>&nbsp;<span style="font-weight: 700;">Configuration</span>
+          </div>
+          
+        </div>
+      </div>
+      <div>
+        <div class="doc_block_items"><div class="markdown"><p>All the configuration variables that can also appear in configuration files.</p>
+</div><div><h2 class="section_title" id="Properties"><a href="#Properties" aria-label="Anchor">Properties</a></h2><div class="section">
+    <div class="doc_item" id="property_date">
+      <a
+      href="#property_date"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">date</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Date in ISO format.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_group">
+      <a
+      href="#property_group"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">group</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Group name, ie, IRC channel without the staring # or &amp; character.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_input">
+      <a
+      href="#property_input"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">input</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>IRC log; a file name or a URL.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_output">
+      <a
+      href="#property_output"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">output</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Output file name</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_nicknames">
+      <a
+      href="#property_nicknames"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">nicknames</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Nickname log; a JSON file name or a URL.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_final">
+      <a
+      href="#property_final"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">final</span><span style="font-weight: 500;">: <span>boolean</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Whether he minutes are final, i.e., they won't be labeled as 'DRAFT'.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_auto">
+      <a
+      href="#property_auto"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">auto</span><span style="font-weight: 500;">: <span>boolean</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Whether the draft label is to be generated automatically into the minutes via a separate script.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_torepo">
+      <a
+      href="#property_torepo"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">torepo</span><span style="font-weight: 500;">: <span>boolean</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Whether the output should be stored in a github repository.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_pandoc">
+      <a
+      href="#property_pandoc"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">pandoc</span><span style="font-weight: 500;">: <span>boolean</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Whether the output is meant to be converted further by pandoc.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_jekyll">
+      <a
+      href="#property_jekyll"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">jekyll</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Whether the output should be adapted to a Github+Jekyll combination. Values may be 'none', 'md', or 'kd'.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_schema">
+      <a
+      href="#property_schema"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">schema</span><span style="font-weight: 500;">: <span>boolean</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Whether the output front matter should also include the schema.org metadata in schema.org.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_irc_format">
+      <a
+      href="#property_irc_format"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">irc_format</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Whether the input is of the log format of a particular IRC client.</p>
+<p>If missing, the format is the RRSAgent output @W3C. 'textual' and IRCCloud are only other client format implemented so far.
+Additionally, the value can also be set to 'rdf' on the command line; however, the main entry points catches that
+value to convert the log to text and then unsets the value. I.e., the 'rdf' value is not visible to the bulk of the
+code.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_ghrepo">
+      <a
+      href="#property_ghrepo"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">ghrepo</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Github repo name.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_ghpath">
+      <a
+      href="#property_ghpath"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">ghpath</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Github path for the upload of the minutes.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_ghbranch">
+      <a
+      href="#property_ghbranch"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">ghbranch</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Branch of the repository where the minutes should be stored. If not set, default is used.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_acrepo">
+      <a
+      href="#property_acrepo"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">acrepo</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Github repo name for action issues.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_issuerepo">
+      <a
+      href="#property_issuerepo"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">issuerepo</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>(Default) github repo for the issues that are discussed on the call.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_acurlpattern">
+      <a
+      href="#property_acurlpattern"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">acurlpattern</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>URL pattern used to refer the minutes.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_ghname">
+      <a
+      href="#property_ghname"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">ghname</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Github user's login name.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_ghemail">
+      <a
+      href="#property_ghemail"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">ghemail</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>Github user's email address.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_ghtoken">
+      <a
+      href="#property_ghtoken"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">ghtoken</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>User's OAUTH personal access token for GitHub.</p>
+<p>This value should <em><strong>NOT</strong></em> appear in any public configuration file or in the code!</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_ghfname">
+      <a
+      href="#property_ghfname"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">ghfname</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>File name to be used if the script uploads the minutes directly to GitHub. Defaults to the
+output setting of the user.</p>
+</div>
+    </div>
+   
+    <div class="doc_item" id="property_irclog">
+      <a
+      href="#property_irclog"
+      class="anchor"
+      aria-label="Anchor"
+      tabIndex=-1
+    >
+      <div style="width: 14px; height: 14px; display: inline-block;">&#128279;</div>
+    </a>
+      <div class="doc_entry">
+        <span class="doc_entry_children">
+          <code>
+            <span style="font-weight: 700;">irclog</span><span style="font-weight: 500;">: <span>string</span></span>
+          </code>
+        </span>
+      </div>
+      <div class="markdown"><p>IRC log contained in the structure verbatim; this is when the script runs on the client side</p>
+</div>
+    </div>
+   </div></div></div>
+      </div>
+    </article>
+  
+</main>
+
+  <div id="searchResults"></div>
+</div>
+
+</body>
+<script src="./search_index.js" defer></script>
+<script src="./fuse.js" defer></script>
+<script src="./search.js" defer></script>
+</html>

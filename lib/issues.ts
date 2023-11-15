@@ -11,7 +11,7 @@ import { GitHub }                                   from './github_api.ts';
 
 
 /**
- * Convert any line that contains exclusively a URL to an issue/PR URL into a scribejs directive on issues.
+ * Convert any line that contains exclusively a URL to a GitHub issue/PR into a scribejs directive on issues.
  * Similarly, if the line is a topic setting line, and the only entry for the section title is an
  * issue/PR URL, the title is modified accordingly.
  *
@@ -62,24 +62,27 @@ export function url_to_issue_directive(the_line: string): string {
 }
 
 /**
- *
+ * Information on an issue
  */
-interface IssueInformation {
+export interface IssueInformation {
+    /** Standard markdown line listing the issue URL */
     text: string;
+    /** 
+     * If Jekyll is used, a comment with the list of URL-s in the form of `<!-- issue URL_X,URL_Y,URL_Z -->`. This may be used
+     * as a post-processing step to add text as a comment to an issue
+     */
     ids?: string[];
 }
 
 /**
  * Handling the `scribejs, issue X,Y,Z` type directives. The method returns a set of strings to be added to the
- * final (markdown) minutes. Two information items are returned
+ * final (markdown) minutes. 
  *
- * 1. A standard markdown line is added listing the the issue URL-s.
- * 2. If this works with Jekyll, a comment is returned with the list of URL-s in the form of `<!-- issue URL_X,URL_Y,URL_Z -->`
- *
- * If the original directive just includes a `-` instead of the issue numbers a special HTML/markdown comment returned of the form `<!-- issue - -->`.
- *
- * While the comments are invisible when displayed as part of the minutes, they can be used by postprocessing tools that
+ * While the comments are invisible when displayed as part of the minutes, they may be used by postprocessing tools that
  * gathers a portion of the discussions that is relevant to a particular issue or set of issues.
+ *
+ * If the original directive just includes a `-` instead of the issue numbers a special HTML/markdown comment returned of the form `<!-- issue - -->`. This
+ * may be used as a "closing" part by a post-processing step to cut off the text in the rest of a (sub)section from being an issue comment.
  *
  * @param config - the general scribejs configuration object
  * @param directive - either 'pr' or 'issue'
@@ -89,8 +92,9 @@ interface IssueInformation {
 export function issue_directives(config: Configuration, directive: string, issue_references: string): IssueInformation {
     // see if there is an issue repository to use:
     const repo = config.issuerepo || config.ghrepo;
+
     if (repo === undefined) {
-        return {text: ''};
+        return { text: '' };
     } else {
         // Previous steps may add a '.' to the end of a line; this is removed here to be on the safe side:
         let final_issue_references = issue_references.trim();
@@ -178,7 +182,7 @@ export function issue_directives(config: Configuration, directive: string, issue
 }
 
 /**
- * Handling a (sub)topic line: find, if present, a `@issue XX,YY,ZZ` line and process it as in [[issue_directives]] leaving the rest of content as the
+ * Handling a (sub)topic line: find, if present, a `@issue XX,YY,ZZ` line and process it as in [`issue_directives`](./issue_directives.html) leaving the rest of content as the
  * real (sub)topic line.
  *
  * @param config - the general scribejs configuration object

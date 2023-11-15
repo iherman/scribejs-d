@@ -20,10 +20,7 @@ export interface Action {
 /**
  * Class to encapsulate all methods to handle actions. The public methods are:
  *
- * * set_date
- * * add_action
- *
- * This methods must be called in this order (with, of course, as many `add_action` calls as necessary).
+ * The methods of an instance must be called in the order of `set_date, add_action*`.
  */
 export class Actions {
     private date = '';
@@ -37,11 +34,11 @@ export class Actions {
      * Constructor, retrieving from the configuration the necessary values for actions. The only one that
      * needs explicit call from the generation is the current date (which is to be extracted from the IRC log).
      *
-     * @param {Object} conf - scribejs configuration.
+     * @param conf - scribejs configuration
      */
     constructor(conf: Configuration) {
         this.url_pattern = conf.acurlpattern || undefined;
-        this.repo_name = conf.acrepo || conf.ghrepo;
+        this.repo_name   = conf.acrepo || conf.ghrepo;
         if (this.repo_name && conf.ghname && conf.ghtoken) {
             this.valid = true;
         } else {

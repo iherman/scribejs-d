@@ -13,11 +13,11 @@ import { Action }                 from './actions.ts';
 
 
 /**
- * Generating a json-ld metadata header to the minutes using mostly schema.org vocabulary terms.
+ * Generating a JSON-LD metadata header to the minutes using, mostly, schema.org vocabulary terms.
  *
- * @param header - the structure used by the converter to generate the header entries into the minutes
- * @param global - the general global data for the scribejs run
- * @returns the JSON-LD encoded metadata of the minutes
+ * @param header - the structure used by the converter to generate the header entries into the minutes.
+ * @param global - the general global data for the scribejs run.
+ * @returns - the JSON-LD encoded metadata of the minutes
  */
 // eslint-disable-next-line max-lines-per-function
 function generate_metadata(header: Header, global: Global): string {
@@ -143,18 +143,18 @@ function generate_metadata(header: Header, global: Global): string {
 
 
 /**
- * Generate the front matter. What this entails depends on the exact format
+ * Generate the front matter. What this entails depends on the exact format:
  *
- * * For Jekyll, this is the front matter as defined by Jekyll with a layout name ('minutes'), date, title, and a json-ld portion containing the JSON-LD schema.org metadata.
+ * * For Jekyll, this is the front matter as defined by Jekyll with a layout name ('minutes'), date, title, and a JSON-LD portion containing the schema.org metadata.
  * * For pandoc it has a line of the form `% Meeting - Date`, followed by a separate line with the W3C logo.
  * * Otherwise just the JSON-LD metadata as a markdown comment
  *
- * The JSON-LD part is generated via the [[generate_metadata]] function.
+ * The JSON-LD part is generated via the [`generate_metadata`](./generate_metadata.html) function.
  *
  *
- * @param header - the structure used by the converter to generate the header entries into the minutes
- * @param global - the general configuration file for the scribejs run
- * @returns the full front matter
+ * @param header - the structure used by the converter to generate the header entries into the minutes.
+ * @param global - the general configuration file for the scribejs run.
+ * @returns the full front matter.
  */
 
 export function generate_front_matter(headers: Header, global: Global): string {

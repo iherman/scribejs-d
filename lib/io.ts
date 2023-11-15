@@ -23,8 +23,8 @@ import { Configuration, PersonWithNickname, Constants }  from './types.ts';
  *
  * The input provided in the configuration is examined whether
  * it is a URL (in which case this is retrieved via HTTP) or not (in which case
- * it is considered to be a local file). Returns a Promise with the content
- * of the input as one string.
+ * it is considered to be a local file to be read). Returns a Promise with the content
+ * of the input as single string.
  *
  * @param input - URL or file name
  * @returns a promise containing the text content as a single string.
@@ -55,12 +55,12 @@ export async function fetch_text(input: string): Promise<string> {
 }
 
 /**
- * Get the IRC log. The input provided in the configuration is examined whether
- * it is a URL (in which case this is retrieved via HTTP) or not (in which case
+ * Get the IRC log. The input reference provided in the configuration (i.e., `conf.input`) is examined 
+ * whether it is a URL (in which case this is retrieved via HTTP) or not (in which case
  * it is considered to be a local file). Returns a Promise with the content
- * of the input as one string.
+ * of the input as single string.
  *
- * @param conf - Overall configuration; the only field that matter here is "conf.input"
+ * @param conf - overall configuration; the only field that matters here is `conf.input`.
  * @returns a promise containing the irc log as a single string.
  * @async
  */
@@ -79,7 +79,7 @@ export async function get_irc_log(conf: Configuration): Promise<string> {
 *
 * The function returns a (possibly slightly modified) version of the URL if
 * everything is fine, or a null value if the input argument is not a URL (but
-* should be used as a filename)
+* should be used as a filename).
 *
 * There might be errors, however, in the case it is a URL. In such cases the
 * function raises an exception; this should be caught to end all processing.
@@ -96,7 +96,7 @@ export async function get_irc_log(conf: Configuration): Promise<string> {
 *     valid-url method) or null if this is, in fact, not a URL
 * @throws if it pretends to be a URL, but it is not acceptable for some reasons.
 */
-function check_url(address: string): string | null {
+function url_sanity_check(address: string): string | null {
     const parsed = url.parse(address);
     if (parsed.protocol === null) {
         // This is not a URL, should be used as a file name
@@ -135,7 +135,7 @@ function check_url(address: string): string | null {
  * retrieved via HTTP) or not (in which case it is considered to be a local file).
  * Returns a Promise with the content of the input as an object.
  *
- * @param conf - Overall configuration; the only field that matter here is "conf.nicknames"
+ * @param conf - Overall configuration; the only field that matter here is `conf.nicknames`
  * @returns - a promise containing the nicknames as an object parsed from JSON.
  * @async
  */
@@ -153,7 +153,7 @@ export async function get_nick_mapping(conf: Configuration): Promise<PersonWithN
     };
 
     if (conf.nicknames) {
-        const address = check_url(conf.nicknames);
+        const address = url_sanity_check(conf.nicknames);
         if (address !== null) {
             const response = await fetch(address);
             if (response.ok) {
@@ -179,18 +179,18 @@ export async function get_nick_mapping(conf: Configuration): Promise<PersonWithN
 /**
  * Committing new markdown file on the github repo.
  *
- * The following terms in the configuration are relevant for this function
+ * The following terms in the configuration are relevant for this function:
  * - `ghrepo`: the full name of the repository. E.g., "w3c/scribejs"
  * - `ghpath`: the path within the repository where the data must be stored. E.g., "test/minutes"
  * - `ghfname`: the file name
  * - `ghtoken`: the user's OAUTH personal access token provided by GitHub (see https://github.com/settings/tokens/new)
  * - `ghbranch`: the target branch within the repository. This term may be missing from the configuration, in which case the default branch of the repo is used
  *
- * The real work is done in the [[GitHub]] interface to Github.
+ * The real work is done in the [GitHub](./GitHub.html) interface to the Github API.
  *
- * @param data - the markdown file to be uploaded
+ * @param data - the markdown file to be uploaded.
  * @param conf - the configuration containing the necessary data for upload.
- * @returns the returned promise data; its only use is for debug
+ * @returns the returned promise data from the GitHub API; its only use is for possible debug.
  * @async
  */
 // deno-lint-ignore no-explicit-any
@@ -207,9 +207,9 @@ async function commit(data: string, conf: Configuration): Promise<any> {
  * Output the minutes. Depending on the configuration, the values are stored in a file or on
  * a GitHub repository.
  *
- * @param  minutes - the markdown data to be uploaded
- * @param conf - the configuration containing additional data
- * @returns the returned promise data with the file name or URL of the generated minutes (for debug purposes)
+ * @param  minutes - the markdown data to be uploaded.
+ * @param conf - the configuration containing additional data.
+ * @returns - the returned promise data with the file name or URL of the generated minutes (for debug purposes).
  * @async
  */
 export async function output_minutes(minutes: string, conf: Configuration): Promise<string> {

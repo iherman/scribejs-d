@@ -93,7 +93,7 @@ function set_input_url(date: string, wg: string) {
 
 /**
  * Collect the full configuration information. This is a combination of four possible sources
- * of increasing priority
+ * of increasing priority:
  *
  * - default configuration (contains empty fields except for the date which set to 'today')
  * - user ghid file, ie, `~/.ghid.json`
@@ -101,10 +101,10 @@ function set_input_url(date: string, wg: string) {
  * - configuration file provided via the command line
  * - additional configuration options in the command line
  *
- * @call_args - the arguments; fall back, by default, on the CLI arguments
- * @returns - full configuration. See the definition of [[Configuration]] as well as the readme file for details.
+ * @param cli_args 
+ * @returns - Final configuration. See the definition of [Configuration](./Configuration.html) as well as the readme file for details.
  */
-export function get_config(call_args: string[]): Global {
+export function get_config(cli_arguments: string[]): Global {
     /** ******************************************************************** */
     // First step: get the command line arguments. There is an error handling for undefined options
     const program = new Command();
@@ -130,7 +130,7 @@ export function get_config(call_args: string[]): Global {
         .on('--help', () => {
             console.log('  file:                      irc log file; if not present, retrieved from the W3C site');
         })
-        .parse(call_args);
+        .parse(cli_arguments);
 
     const options = program.opts();
 

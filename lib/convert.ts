@@ -14,7 +14,11 @@ import { Constants }                            from './types.ts';
 import { Actions }                              from './actions.ts';
 
 /**
- * The "top level" class to perform the conversion.
+ * The "top level" class to perform the conversion. The "real" processing is controlled by the [`convert_to_markdown`](#method_convert_to_markdown_0) method;
+ * all other (private) methods perform all kinds of processing on the input text.
+ * 
+ * The only reason of using a class is to properly encapsulate a global data (see [`Global`](#property_global)), which is shared and used by all methods.
+ * 
  */
 export class Converter {
     /** The global data for all things done; an extension of the user configuration with most of the run-time data */
@@ -25,7 +29,7 @@ export class Converter {
 
     /**
      *
-     * @param config - the global data. Some of the fields are only placeholders and are filled in while processing
+     * @param config - The global data. Some of the fields are only placeholders and are filled in while processing.
      */
     constructor(config: Global) {
         this.global = config;
@@ -45,7 +49,7 @@ export class Converter {
      * the same full names can be used throughout the minutes.
      *
      * @param nick - name/nickname
-     * @returns The structure includes `name` for the full name and `url`/`github`/`role` if available.
+     * @returns - The structure includes `name` for the full name and `url`/`github`/`role` if available.
      */
     private get_name(nick: string): Person {
         /**
@@ -99,11 +103,13 @@ export class Converter {
     }
 
     /**
-     * Full name. This relies on the (optional) nickname list that
+     * Return the full name corresponding to a nickname. This relies on the (optional) nickname list that
      * the user may provide, and replaces the (sometimes cryptic) nicknames with real names.
+     * 
+     * This is just a wrapper around the local [`get_name`](#method_get_name_0) method.
      *
      * @param nick - name/nickname
-     * @returns  (real) full name (extracted from the corresponding [[Person]] structure)
+     * @returns  (real) full name (extracted from the corresponding [Person](./Person.html) structure)
      */
     private full_name(nick: string): string {
         return this.get_name(nick).name;
@@ -113,8 +119,10 @@ export class Converter {
      * Provide with the github name for a nickname. This relies on the (optional) nickname list that
      * the user may provide, and replaces the (sometimes cryptic) nicknames with real names.
      *
+     * This is just a wrapper around the local [`get_name`](#method_get_name_0) method.
+     *
      * @param nick - name/nickname
-     * @returns github id (extracted from the corresponding [[Person]] structure). `undefined` if the github id has not been set.
+     * @returns github id (extracted from the corresponding [Person](./Person.html) structure). `undefined` if the github id has not been set.
      */
     private github_name(nick: string): string | undefined {
         return this.get_name(nick).github;
@@ -123,7 +131,11 @@ export class Converter {
     /** ******************************************************************* */
 
     /**
-     * Clean up the names in the header, i.e., make sure that all names are full names instead of nicknames, and that there are also no duplicates.
+     * Clean up the names in the header, i.e., make sure that all names are full names instead of nicknames (if possible), 
+     * and that there are also no duplicates.
+     * 
+     * @param headers - current Header entries
+     * @returns - the same Header entry is returned, possibly improved.
      */
     private cleanup_names_in_header(headers: Header): Header {
         const convert_to_full_name = (nick: string): string => this.full_name(nick);
@@ -145,12 +157,13 @@ export class Converter {
 
 
     /**
-     * Generate the preamble part of the minutes: present, guests, regrets, chair, etc. The nicknames stored in the incoming structure are converted into real names via the [[full_name]] method.
+     * Generate the preamble part of the minutes: present, guests, regrets, chair, etc. The nicknames stored in the incoming structure are converted into real names 
+     * via the [`full_name`](#method_full_name_0) method.
      *
      * Returns a string with the (markdown encoded) version of the header.
      *
      * @param headers - the full header structure
-     * @returns the preamble in Markdown
+     * @returns - the preamble in Markdown
      */
     private generate_preamble(headers: Header): string {
         let header_class = '';
@@ -192,16 +205,18 @@ ${no_toc}
 
 
     /**
-     * Generate the real content. This is the real core of the conversion...
+     * Generate the final, markdown content: this is the real core of the conversion.
      *
      * The function returns a string containing the (markdown version of) the minutes.
      *
-     * Following traditions
-     *  - the lines that are not written by the scribe are rendered differently (as a quote)
+     * Following the scribing rules:
+     *  - the lines that are not written by the scribe are rendered differently (as a quote in markdown)
      *  - lines beginning with a "..." or a "…" are considered as "continuation
      *    lines" by the scribe; these are combined into a paragraph
      *  - "Topic:" and "Subtopic:" produce section headers, and a corresponding
-     *    TOC is also generated
+     *    TOC entry is also generated for each of them.
+     * 
+     * The method returns the minutes in Markdown, possible preceded by the TOC (if applicable, i.e., if the output format is in Kramdown).
      *
      * @param {array} lines - array of {nick, content, content_lower} objects
      * @returns {string} - the body of the minutes encoded in Markdown
@@ -595,7 +610,7 @@ ${no_toc}
     }
 
     /**
-     * The main entry point: generate the full content in the form of a large string (the minutes in markdown);
+     * The main entry point: generate the full content in the form of a large string (i.e., the minutes in markdown);
      *
      * @param body - the IRC log; this is either a string or an array of strings (the latter is used when the code is called on the client side).
      */

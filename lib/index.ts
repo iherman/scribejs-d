@@ -21,15 +21,21 @@ import { Global }   from './types.ts';
 
 /**
  * Entry point for the package: read the configuration files, get the IRC logs from the command line, convert and output the result in Markdown.
- *
- * The real work is done in the relevant modules, mostly controlled by an instance of a [[Converter]] class.
+ * The real work is done in the relevant modules, controlled by a single instance of a [Converter](./Converter.html) class.
+ * 
+ * 
+ * This function may serve as the entry point for a "main" that provides the CLI arguments, or any layer on top of the library that
+ * produces an environment specific arguments.
+ *  
+ * @param cli_args - The `cli_args` parameter contains the array of CLI arguments. Beware: the array ***must*** begin with two empty strings (followed, e.g., by `Deno.args()`). The reason
+ * is that the library uses the `npm:commander` module, which is prepared for the `node.js` argument list (which includes two entries _before_ the "real" arguments).
  */
-export async function run(call_args: string[]) {
+export async function run(cli_args: string[]) {
     try {
         // Collect and combine the configuration file
         // Note that the get_config method is synchronous
         // (uses a sync version of file system access)
-        const config: Global = conf.get_config(call_args);
+        const config: Global = conf.get_config(cli_args);
 
         // Get the nickname mappings object. The result gets added to the configuration
         // config.nicks is of type Nickname[]
@@ -52,7 +58,7 @@ export async function run(call_args: string[]) {
 
         // If the log is in RDF format of RRSAgent, it is converted to the textual equivalent
         if (config.irc_format === 'rdf') {
-            irc_log = await rdf.convert(irc_log);
+            irc_log = await rdf.convert_rdf(irc_log);
             delete config.irc_format;
         }
 

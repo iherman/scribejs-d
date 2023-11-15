@@ -21,8 +21,23 @@ interface GH_Cache {
     [key:string]: GitHub
 }
 
+/**
+ * There may be references to different repositories within one IRC log; to avoid
+ * re-generating a new [GitHub](./GitHub.html), this wrapper class caches the various
+ * instances.
+ * 
+ * The final goal is to avoid unnecessary retrieval of (possibly large) list of 
+ * issue information; this is optimized per each [GitHub](./GitHub.html) instance.
+ */
 export class GitHubCache {
     private static github_interfaces: GH_Cache = {};
+    /**
+     * Retrieve a [GitHub](./GitHub.html) instance, possibly creating (and storing) it on the fly
+     * 
+     * @param repo_id - the format of the id is a `owner/repo` string.
+     * @param config - needed to initialize a new [GitHub](./GitHub.html) instance.
+     * @returns 
+     */
     static gh(repo_id: string, config: Configuration): GitHub {
         if (GitHubCache.github_interfaces[repo_id] === undefined) {
             GitHubCache.github_interfaces[repo_id] = new GitHub(repo_id, config);
@@ -129,8 +144,8 @@ export function every<T>(elements: T[], callback: ((element: T) => boolean)): bo
  * The function has a side effect of setting the irc_format value in the configuration. This means
  * the right extra lines will be removed, if necessary (and the regexp will be matched only once)
  *
- * @param line - the full line of an IRC log
- * @return truncated line, ie, with preamble removed.
+ * @param line - the full line of an IRC log.
+ * @return - truncated line, i.e., with preamble removed.
  */
 function remove_preamble(line: string, config: Configuration): string {
     /**
@@ -170,16 +185,16 @@ function remove_preamble(line: string, config: Configuration): string {
  *
  * At the moment there are two possible directives:
  *
- * 1. `set`, adding a temporary nick name (by extending the global data on nicknames)
- * 2. `issue` or `pr`,  handling the issue/pr directives
+ * 1. `set`, adding a temporary nick name (by extending the global data on nicknames).
+ * 2. `issue` or `pr`,  handling the issue/pr directives.
  *
  * This function is used as part of an `Array.filter` operation; i.e., the return value is a
  * boolean signaling whether the line should be kept or not. See the exact value of the boolean below.
  *
  * Note, however, that the second block (issue directives) are not really handled by this function; their handling is delayed to the local context where these directives appear.
  *
- * @param line_object - a line object; the only important entry is the 'content'
- * @returns true if the line is _not_ a global scribejs directive (ie, the line should be kept), false otherwise.
+ * @param line_object - a line object; the only important entry is the `content`.
+ * @returns - true if the line is _not_ a global scribejs directive (ie, the line should be kept), false otherwise.
  */
 function handle_scribejs(line_object: LineObject, config: Global): boolean {
     if (line_object.content_lower &&
@@ -227,7 +242,7 @@ function handle_scribejs(line_object: LineObject, config: Global): boolean {
 
 
 /**
- * Get a 'label', ie, find out if there is a 'XXX:' at the beginning of a line.
+ * Get a 'label', ie, find out whether there is a 'XXX:' at the beginning of a line.
  *
  * The function takes care of a frequent scribe error: the continuation line (starting with a '...' or an '…')
  * is sometimes preceded by a ':'. This is taken care of by returning the full line without the ':'.
@@ -274,14 +289,14 @@ export function get_label(line: string): {label: string|null, content: string} {
 
 
 /**
- * Create a "canonical" nickname, ie,
+ * Create a "canonical" nickname, i.e.,
  *
  * * lower case
  * * free of additional characters used by (some) IRC servers, like adding a '@' character, or adding an '_' character to the start or the end of the nickname.
  *
  * @param nick - the original nickname
  * @param lower - whether the name should be put into lower case
- * @return the 'canonical' nickname
+ * @return - the 'canonical' nickname
  */
 export function canonical_nick(nick: string, lower = true): string {
     const to_canonicalize = lower ? nick.toLocaleLowerCase() : nick;
@@ -295,7 +310,7 @@ export function canonical_nick(nick: string, lower = true): string {
  * nicknames, 'XXX:' means set them.
  *
  * The function receives, as argument, a list containing the current list of those
- * categories, and performs a 'union' or 'difference' actions, resulting in an updated list
+ * categories, and performs a 'union' or 'difference' actions, resulting in an updated list.
  *
  * @param current_list - the current list of nicknames
  * @param line - IRC line object
@@ -306,15 +321,13 @@ export function canonical_nick(nick: string, lower = true): string {
  */
 export function get_name_list(current_list: string[], line: LineObject, category :string, remove = true): undefined | string[] {
     // fake function, just to make the code below cleaner for the case when removal must be ignored
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const arg1 = (a: any, _b: any): any => a;
 
     // Another fake function that only keeps the second argument, again to make the code cleaner
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const arg2 = (_a: any, b: any): any => b;
 
     // Extract the (nick) names from the comma separated list of persons
-    // 'number' is the number of characters that must be ignored, corresponding to the category
+    // 'number' is the number of characters that must be ignored at the beginning, corresponding to the category
     const get_names = (index: number): string[] => {
         // Care should be taken to trim everything in order keep the nick names clean of extra spaces...
         const retval = line.content.slice(index + 1).trim().split(',');
@@ -334,7 +347,7 @@ export function get_name_list(current_list: string[], line: LineObject, category
         let names: string[]  = [];
         // Note that, although the correct syntax is, e.g., "present+", a frequent
         // mistake is to type "present +". Same for the usage of '-'.
-        // The script resilient on this:-)
+        // The script is resilient for this:-)
         if (lower.startsWith(`${category}+`) === true) {
             names = get_names(cutIndex);
         } else if (lower.startsWith(`${category} +`) === true) {
@@ -365,7 +378,7 @@ export function get_name_list(current_list: string[], line: LineObject, category
 
 
 /**
- * Cleanup actions on the incoming irc log (ie, an array of lines):
+ * Cleanup actions on the incoming irc log (i.e., an array of lines):
  *
  *  - remove empty lines
  *  - remove the irc preamble (time stamp, typically)
@@ -378,8 +391,8 @@ export function get_name_list(current_list: string[], line: LineObject, category
  *  - handle the "scribejs, nick FULL NAME" type commands (or, equivalently, "sjs, nick ...")
  *
  *
- * @param minutes - the full IRC log
- * @returns array of {nick, content, content_lower} objects ('nick' is the IRC nick)
+ * @param minutes - the full IRC log.
+ * @returns array of {nick, content, content_lower} objects ('nick' is the IRC nick).
  */
 // eslint-disable-next-line max-lines-per-function
 export function cleanup(minutes: string[], config: Global): LineObject[] {
@@ -395,7 +408,7 @@ export function cleanup(minutes: string[], config: Global): LineObject[] {
 
         // remove possible IRC format specific lines
         .filter((line: string): boolean => {
-            // this filter is, in fact, unnecessary if rrsagent is used
+            // this filter is, in fact, unnecessary if rrsagent is used;
             // however, if the script is used against a line-oriented log
             // of an irc client (like textual) then this come handy in taking
             // out at least some of the problematic lines
@@ -445,6 +458,7 @@ export function cleanup(minutes: string[], config: Global): LineObject[] {
             content : line.slice(sp + 1).trim(),
         };
     });
+
     // Filtering on the line objects now
     return line_objects
         // Taking care of the accidental appearance of what could be
@@ -535,7 +549,8 @@ export function cleanup(minutes: string[], config: Global): LineObject[] {
 
 
 /**
- *  Fill in the header structure with
+ *  Fill in the header structure with:
+ * 
  *   - present: comma separated IRC nicknames
  *   - regrets: comma separated IRC nicknames
  *   - guests: comma separated IRC nicknames
@@ -544,11 +559,12 @@ export function cleanup(minutes: string[], config: Global): LineObject[] {
  *   - meeting: string
  *   - date: string
  *   - scribe: comma separated IRC nicknames
+ * 
  * All these actions, except for 'scribe', also remove the corresponding lines from the IRC log array.
  *
- * @param lines - array of {nick, content, content_lower} objects
- * @param date - date to be used in the header
- * @returns {header, lines}, where "header" is the header object, "lines" is the rest of the IRC log, with header specific lines removed
+ * @param lines - array of {nick, content, content_lower} objects.
+ * @param date - date to be used in the header.
+ * @returns {header, lines}, where "header" is the header object, "lines" is the rest of the IRC log, with header specific lines removed.
  */
 export function separate_header(lines: LineObject[], date: string): {headers: Header, lines: LineObject[]} {
     const headers: Header = {
@@ -663,7 +679,7 @@ export function separate_header(lines: LineObject[], date: string): {headers: He
 
 
 /**
- * Handle the i/../../ type lines, ie, insert new lines
+ * Handle the `i/../../` type lines, i.e., insert new lines.
  *
  * @param lines - array of {nick, content, content_lower} objects
  * @returns {array} - returns the lines with the possible changes done
@@ -748,7 +764,7 @@ export function perform_insert_requests(lines: LineObject[]): LineObject[] {
 
 
 /**
- * Handle the s/../.. type lines, ie, make changes on the contents
+ * Handle the `s/../..` type lines, i.e., make changes on the contents.
  *
  * @param {array} lines - array of {nick, content, content_lower} objects
  * @returns {array} - returns the lines with the possible changes done
@@ -846,8 +862,9 @@ export function perform_change_requests(lines: LineObject[]): LineObject[] {
 /**
  * Splitting a line into words. By default, one splits along a space character; however, markdown code
  * (i.e., anything between a pair pair of "`" characters) should be considered a single word.
- * @param {String} full_line - the content line
- * @returns {Array} - array of strings, ie, the words
+ * 
+ * @param full_line - the content line
+ * @returns - array of strings, ie, the words
  */
 export function split_to_words(full_line: string): string[] {
     const trimmed = full_line.trim();
@@ -877,7 +894,7 @@ export function split_to_words(full_line: string): string[] {
 
 
 /**
-* Rudimentary check whether the string should be considered a dereferencable URL
+* Rudimentary check whether the string should be considered a dereferencable URL.
 */
 export function check_url(str: string): boolean {
     const a = url.parse(str);
@@ -885,28 +902,26 @@ export function check_url(str: string): boolean {
 }
 
 
-// The case when the first "word" is '->' followed by a URL and a text ("Ralph style links") should be treated separately
-
 /**
 * URL handling: find URL-s in a line and convert it into an active markdown link.
 *
 * There are different possibilities:
-* * `-> URL some text` as a separate line (a.k.a. Ralph style links); "some text" becomes the link text
+*
+* * `-> URL some text` as a separate line (a.k.a., Ralph style links); "some text" becomes the link text
 * * `-> some text URL` anywhere in the line, possibly several patterns in a line; "some text" becomes the link text
 * * Simple URL formatted text where the link text is the URL itself
 *
 * Links in markup syntax are left unchanged.
 *
-* @param {String} line - the line itself
-* @returns {String} - the converted line
+* @param line - the line itself
+* @returns - the converted line
 */
 export function add_links(line: string): string {
-
     /**
      * Convert (if applicable) a "Ralph style link", i.e., a '->' followed by a URL and a text, into a structure
      * with the link data part and a url_part
      */
-    const ralph_style_links = (words: string[]): {link_part: string, url_part: string|undefined} => {
+    const ralph_style_links = (words: string[]): {link_part: string, url_part: string | undefined} => {
         if ((words[0] === '->' || words[0] === '-->') && words.length >= 3 && check_url(words[1])) {
             const url_part = words[1];
             const link_part = words.slice(2).join(' ');

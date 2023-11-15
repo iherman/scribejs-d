@@ -8,7 +8,7 @@
  * @packageDocumentation
  */
 
-import { ValidationError } from 'npm:@exodus/schemasafe';
+import { ValidationError } from 'npm:@exodus/schemasafe@^1.3.0';
 
 import * as io      from './io.ts';
 import * as convert from './convert.ts';

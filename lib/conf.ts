@@ -7,9 +7,9 @@
 /**
 * Get the arguments and/or configuration file
 */
-import * as path                            from "https://deno.land/std/path/mod.ts";
-import { Command }                          from 'npm:commander';
-import { ValidationError }                  from 'npm:@exodus/schemasafe';
+import * as path                            from "https://deno.land/std@0.204.0/path/mod.ts";
+import { Command }                          from 'npm:commander@^11.1.0';
+import { ValidationError }                  from 'npm:@exodus/schemasafe@1.3.0';
 import * as schemas                         from './schemas.ts';
 import * as utils                           from './utils.ts';
 import { Configuration, Global, Constants } from './types.ts';

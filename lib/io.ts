@@ -13,7 +13,7 @@
 
 import * as url                                          from 'node:url';
 // @deno-types="npm:@types/valid-url" 
-import * as validUrl                                     from 'npm:valid-url';
+import * as validUrl                                     from 'npm:valid-url@^1.0.9';
 import { GitHub }                                        from './github_api.ts';
 import { Configuration, PersonWithNickname, Constants }  from './types.ts';
 

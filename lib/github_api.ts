@@ -1,8 +1,8 @@
 // deno-lint-ignore-file no-explicit-any
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 
-import { Octokit }                from 'https://esm.sh/octokit?dts';
-import { createOrUpdateTextFile } from 'https://esm.sh/@octokit/plugin-create-or-update-text-file';
+import { Octokit }                from "https://esm.sh/octokit@3.1.1?dts";
+import { createOrUpdateTextFile } from "https://esm.sh/@octokit/plugin-create-or-update-text-file@4.0.1";
 import { Configuration }          from './types.ts';
 
 /**

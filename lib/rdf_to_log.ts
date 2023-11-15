@@ -13,7 +13,7 @@
  * @packageDocumentation
  */
 // @deno-types="npm:@types/xml2js"
-import { Parser } from 'npm:xml2js';
+import { Parser } from 'npm:xml2js@^0.6.2';
 
 /**
  * Convert the RDF/XML formatted RRSAgent log to its textual equivalent.

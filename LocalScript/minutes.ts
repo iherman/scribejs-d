@@ -7,7 +7,7 @@
  *
  * @packageDocumentation
  */
-import { Command } from 'npm:commander';
+import { Command } from 'npm:commander@^11.1.0';
 import { run }     from "../lib/index.ts";
 
 // The final argument has to be created from a command line containing spaces. Usage of this Fake space

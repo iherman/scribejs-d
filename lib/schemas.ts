@@ -7,7 +7,7 @@
 */
 
 
-import { parser }       from 'npm:@exodus/schemasafe';
+import { parser }       from 'npm:@exodus/schemasafe@^1.3.0';
 import config_schema    from "./schemas/config_schema.json"    with { type: "json" };
 import nicknames_schema from "./schemas/nicknames_schema.json" with { type: "json" };
 

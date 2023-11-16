@@ -11,7 +11,6 @@ import { LineObject, Header, Configuration, Global }    from './types.ts';
 import { Constants }                                    from './types.ts';
 import { url_to_issue_directive }                       from './issues.ts';
 import { GitHub }                                       from './github_api.ts';
-import * as url                                         from 'node:url';
 
 /* ******************************************************************** */
 /*                     Cached Github interfaces                         */
@@ -897,8 +896,12 @@ export function split_to_words(full_line: string): string[] {
 * Rudimentary check whether the string should be considered a dereferencable URL.
 */
 export function check_url(str: string): boolean {
-    const a = url.parse(str);
-    return a.protocol !== null && Constants.protocols.indexOf(a.protocol) !== -1;
+    try {
+        const a = new URL(str);
+        return Constants.protocols.indexOf(a.protocol) !== -1;
+    } catch(_) {
+        return false;
+    }
 }
 
 

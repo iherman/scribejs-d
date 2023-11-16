@@ -11,9 +11,6 @@
  * @packageDocumentation
  */
 
-import * as url                                          from 'node:url';
-// @deno-types="npm:@types/valid-url" 
-import * as validUrl                                     from 'npm:valid-url@^1.0.9';
 import { GitHub }                                        from './github_api.ts';
 import { Configuration, PersonWithNickname, Constants }  from './types.ts';
 
@@ -31,8 +28,10 @@ import { Configuration, PersonWithNickname, Constants }  from './types.ts';
  * @async
  */
 export async function fetch_text(input: string): Promise<string> {
-
-    if (url.parse(input).protocol !== null) {
+    try {
+        // Testing whether this is indeed a proper URL
+        const _addr = new URL(input);
+        // if we got here, this is a proper URL
         const response = await fetch(input);
         if (response.ok) {
             const returned_content_type = response.headers.get('content-type');
@@ -49,7 +48,7 @@ export async function fetch_text(input: string): Promise<string> {
         } else {
             throw new Error(`HTTP response ${response.status}: ${response.statusText} on ${input}`);
         }
-    } else {
+    } catch(_) {
         return Deno.readTextFile(input);
     }
 }
@@ -97,36 +96,30 @@ export async function get_irc_log(conf: Configuration): Promise<string> {
 * @throws if it pretends to be a URL, but it is not acceptable for some reasons.
 */
 function url_sanity_check(address: string): string | null {
-    const parsed = url.parse(address);
-    if (parsed.protocol === null) {
-        // This is not a URL, should be used as a file name
+
+    try {
+        // If this raises an exception, this is not a URL!
+        const parsed = new URL(address);
+ 
+        // Check whether we use the right protocol
+        if (['http:', 'https:'].includes(parsed.protocol) === false) {
+            throw new Error(`Only http(s) url-s are accepted (${address})`);
+        }
+
+        // Check the port
+        if (parsed.port && Number.parseInt(parsed.port, 10) <= 1024) {
+            throw new Error(`Unsafe port number used in ${address} (${parsed.port})`);
+        }
+
+        if (parsed.hostname === 'localhost' || parsed.hostname === '127.0.0.1') {
+            throw new Error(`Localhost is not accepted in ${address}`);
+        }
+
+        // If we got this far, this is a proper URL, ready to be used.
+        return address;
+    } catch(_) {
         return null;
     }
-    // Check whether we use the right protocol
-    if (['http:', 'https:'].includes(parsed.protocol) === false) {
-        throw new Error(`Only http(s) url-s are accepted (${address})`);
-    }
-
-    // Run through the URL validator
-    const retval = validUrl.isWebUri(address);
-    if (retval === undefined) {
-        throw new Error(`The url ${address} isn't valid`);
-    }
-
-    // Check the port
-    if (parsed.port !== null && Number.parseInt(parsed.port, 10) <= 1024) {
-        throw new Error(`Unsafe port number used in ${address} (${parsed.port})`);
-    }
-
-    // Don't allow local host in a CGI script...
-    // (In Bratt's python script (<http://dev.w3.org/2004/PythonLib-IH/checkremote.py>) this step was much
-    // more complex, and has not yet been reproduced here...
-    if (parsed.hostname === 'localhost' || parsed.hostname === '127.0.0.1') {
-        throw new Error(`Localhost is not accepted in ${address}`);
-    }
-
-    // If we got this far, this is a proper URL, ready to be used.
-    return retval;
 }
 
 /**

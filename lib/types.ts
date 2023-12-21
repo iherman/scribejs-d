@@ -33,6 +33,11 @@ export namespace Constants {
     /** Regex to filter out the preamble of each line in Textual */
     export const textual_regexp  = /^\[[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{4}\]/;
 
+    /** Number of characters added to each line by The Lounge */
+    export const lounge_preamble_size = 2 + 1 + 2 + 1;
+    /** Regex to filter out the preamble of each line in The Lounge */
+    export const lounge_regexp = /^[0-9]{2}:[0-9]{2}/
+
     /** Regex to localize an issue setting scribejs directive */
     export const issue_regexp    = /^@?(scribejs|sjs),\s+(issue|pr)\s+(.*)$/;
 
@@ -109,7 +114,7 @@ export interface Configuration {
     /**
      * Whether the input is of the log format of a particular IRC client.
      *
-     * If missing, the format is the RRSAgent output @W3C. 'textual' and IRCCloud are only other client format implemented so far.
+     * If missing, the format is the RRSAgent output @W3C. 'textual', IRCCloud, and the Lounge are only other client format implemented so far.
      * Additionally, the value can also be set to 'rdf' on the command line; however, the main entry points catches that
      * value to convert the log to text and then unsets the value. I.e., the 'rdf' value is not visible to the bulk of the
      * code.

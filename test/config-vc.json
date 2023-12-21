@@ -1,0 +1,13 @@
+{
+    "ghrepo"       : "iherman/mprocessing_tests",
+    "issuerepo"    : "iherman/mprocessing_tests",
+	"ghpath"       : "_minutes",
+	"ghbranch"     : "main",
+	"group"        : "vcwg",
+	"auto"         : true,
+    "nicknames"    : "/Users/ivan/W3C/github/VC/verifiable-credentials/assets/nicknames.json",
+    "acrepo"       : "iherman/mprocessing_tests",
+    "acurlpattern" : "https://iherman.github.io/mprocessing_tests/_minutes/%DATE%-epub",
+    "schema"       : true
+}
+

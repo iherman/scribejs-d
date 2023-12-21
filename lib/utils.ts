@@ -157,10 +157,11 @@ function remove_preamble(line: string, config: Configuration): string {
     const preamble_size = (the_line: string): number => {
         if (config.irc_format) {
             switch (config.irc_format) {
-            case 'irccloud': return Constants.irccloud_preamble_size;
-            case 'textual' : return Constants.textual_preamble_size;
-            case 'rrsagent':
-            default: return Constants.rrsagent_preamble_size;
+                case 'irccloud': return Constants.irccloud_preamble_size;
+                case 'textual' : return Constants.textual_preamble_size;
+                case 'lounge': return Constants.lounge_preamble_size;
+                case 'rrsagent':
+                default: return Constants.rrsagent_preamble_size;
             }
         } else if (the_line.match(Constants.irccloud_regexp) !== null) {
             config.irc_format = 'irccloud';
@@ -168,6 +169,9 @@ function remove_preamble(line: string, config: Configuration): string {
         } else if (the_line.match(Constants.textual_regexp) !== null) {
             config.irc_format = 'textual';
             return Constants.textual_preamble_size;
+        } else if (the_line.match(Constants.lounge_regexp) !== null) {
+            config.irc_format = 'lounge';
+            return Constants.lounge_preamble_size;
         } else {
             config.irc_format = 'rrsagent';
             return Constants.rrsagent_preamble_size;
@@ -416,34 +420,48 @@ export function cleanup(minutes: string[], config: Global): LineObject[] {
                 return true;
             }
             switch (config.irc_format) {
-            case 'textual': {
-                const stripped_line = line.trim();
-                return !(
-                    stripped_line.length === 0
-                    || stripped_line[0] === '•'
-                    || stripped_line.startsWith('Disconnected for Sleep Mode')
-                    || stripped_line.includes('rrsagent')
-                    || stripped_line.includes('zakim')
-                    || stripped_line.includes('github-bot')
-                    || stripped_line.includes('agendabot')
-                    || stripped_line.includes('joined the channel')
-                    || stripped_line.includes('------------- Begin Session -------------')
-                    || stripped_line.includes('------------- End Session -------------')
-                    || stripped_line.includes('changed the topic to')
-                );
-            } case 'irccloud': {
-                const stripped_line = line.trim();
-                return !(
-                    stripped_line.length === 0
-                    || stripped_line[0] === '→'
-                    || stripped_line[0] === '—'
-                    || stripped_line[0] === '⇐'
-                    || stripped_line[0] === '←'
-                );
+                case 'textual': {
+                    const stripped_line = line.trim();
+                    return !(
+                        stripped_line.length === 0
+                        || stripped_line[0] === '•'
+                        || stripped_line.startsWith('Disconnected for Sleep Mode')
+                        || stripped_line.includes('rrsagent')
+                        || stripped_line.includes('zakim')
+                        || stripped_line.includes('github-bot')
+                        || stripped_line.includes('agendabot')
+                        || stripped_line.includes('joined the channel')
+                        || stripped_line.includes('------------- Begin Session -------------')
+                        || stripped_line.includes('------------- End Session -------------')
+                        || stripped_line.includes('changed the topic to')
+                    );
+                } 
+                case 'irccloud': {
+                    const stripped_line = line.trim();
+                    return !(
+                        stripped_line.length === 0
+                        || stripped_line[0] === '→'
+                        || stripped_line[0] === '—'
+                        || stripped_line[0] === '⇐'
+                        || stripped_line[0] === '←'
+                    );
+                } 
+                case 'lounge': {
+                    const stripped_line = line.trim();
+                    return !(
+                        stripped_line.length === 0
+                        || stripped_line[0] === '*'
+                        || stripped_line.includes('zakim')
+                        || stripped_line.includes('Zakim')
+                        || stripped_line.includes('RRSAgent')
+                        || stripped_line.includes('github-bot')
+                        || stripped_line.includes('agendabot')
+                    );
+                }
+                default: {
+                    return true;
+                }
             }
-            default: {
-                return true;
-            }}
         });
 
     // IRC log lines are turned into objects, separating the nicknames. From now on, the minutes

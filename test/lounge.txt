@@ -1,0 +1,292 @@
+20:57 <brent> zakim, start the meeting
+20:57 <Zakim> RRSAgent, make logs Public
+20:57 <Zakim> please title this meeting ("meeting: ..."), brent
+20:57 <RRSAgent> I have made the request, Zakim
+20:57 <brent> meeting: Verifiable Credentials Working Group Teleconference
+20:57 <brent> chair: Brent
+20:57 <brent> present+
+20:58 *** cabernet (~cabernet@c080ddbb.public.cloak) has joined the channel
+20:58 <cabernet> present+
+21:01 *** decentralgabe (~decentralgabe@c080ddbb.public.cloak) has joined the channel
+21:01 <decentralgabe> present+
+21:01 <selfissued_> present+
+21:01 <pauld_gs1> present+
+21:02 <DavidC> present+
+21:02 <GregB> present+
+21:02 <manu> present+
+21:02 *** cabernet_ (~cabernet@c080ddbb.public.cloak) has joined the channel
+21:02 <dlongley> present+
+21:02 *** TallTed (~Thud@c080ddbb.public.cloak) has joined the channel
+21:02 <cabernet_> present+
+21:04 <dlehn> present+
+21:04 <GregB> scribe+
+21:04 <GregB> Last VC meeting of 2023
+21:05 *** pdl_asu (~pdl_asu@c080ddbb.public.cloak) has joined the channel
+21:05 <GregB> Goals for this meeting: insure coarse of action for each outstanding before CR issue.
+21:05 <TallTed> present+
+21:05 * dlongley remember when scribing to type the person's name  (IRC nick) that's speaking followed by a colon... such as: "brent: We can go to the group and propose"
+21:05 *** cabernet (~cabernet@c080ddbb.public.cloak) has quit (Ping timeout: 180 seconds)
+21:05 <GregB> brent: Said those things not GregB...
+21:05 <manu> q+
+21:05 * Zakim sees manu on the speaker queue
+21:06 <dlongley> s/Goals for this/brent: Goals for this/
+21:06 <brent> ack manu
+21:06 * Zakim sees no one on the speaker queue
+21:06 <dlongley> s/Last VC meeting/brent: Last VC meeting/
+21:06 <GregB> manu: two topics maintainers for did reg. TAG review status
+21:06 <dlongley> s/brent: Said those things not GregB...//
+21:06 <brent> Topic: Maintainers
+21:06 <manu> Seeking maintainers for DID Spec Registries and VC Spec Directory: https://lists.w3.org/Archives/Public/public-credentials/2023Dec/0055.html
+21:06 <GregB> manu: seeking maintainers for DID/Spec registeries...
+21:07 <brent> Topic: TAG Review VCDM
+21:07 <GregB> manu: TAG review VC Data Model 2.0
+21:07 <manu> TAG Review VCDM v2.0: https://github.com/w3ctag/design-reviews/issues/860#issuecomment-1856254791
+21:07 <GregB> manu: Nothing major in the TAG review.
+21:07 <manu> TAG Review Response: https://github.com/w3ctag/design-reviews/issues/860#issuecomment-1865010224
+21:08 <GregB> manu: tried to address number of issues they brought up.
+21:08 <GregB> manu: was trying to be timely in response.
+21:08 <GregB> brent: any comments?
+21:08 *** andres (~andres@c080ddbb.public.cloak) has joined the channel
+21:08 <brent> Topic: Work Item status updates/PRs
+21:08 <andres> present+
+21:08 <GregB> brent: work item status/PRs
+21:09 <selfissued_> q+
+21:09 * Zakim sees selfissued_ on the speaker queue
+21:09 <brent> ack selfissued_
+21:09 * Zakim sees no one on the speaker queue
+21:09 <GregB> selfissued: Only two PRs left for VC JOSE/COSE
+21:09 <GregB> selfissued: would like to close one on this call...
+21:10 <GregB> brent: continue in depth
+21:10 <selfissued_> https://github.com/w3c/vc-jose-cose/pulls
+21:10 <selfissued_> https://github.com/w3c/vc-jose-cose/pull/190
+21:10 <brent> subtopic: https://github.com/w3c/vc-jose-cose/pull/190
+21:11 <GregB> selfissued: PR190, verification algorithm effort, has been reviewed. TallTed made suggestions.
+21:11 <GregB> selfissued: Jeff A. "said this is what it was hoping for".
+21:12 <GregB> brent: Just want Ivan's script to run first...
+21:12 <DavidC> q+
+21:12 * Zakim sees DavidC on the speaker queue
+21:12 <brent> ack DavidC
+21:12 * Zakim sees no one on the speaker queue
+21:12 <GregB> selfissued: Can the mintues show we want to merge 190.
+21:13 <GregB> DavidChadwick: details on PR... Question: on key revocation, key status...
+21:13 <GregB> selfissued: Short answer no. You might want to file an issue on that. Seems orthogonal.
+21:14 <GregB> DavidChadwick: PR refers to the key and trust. Important to say something...
+21:14 <GregB> selfissued: important to making progress. Do you want to propose text?
+21:15 <GregB> DavidChadwick: will raise an issue.
+21:15 <GregB> brent: no one opposed to merge.
+21:15 <selfissued_> https://github.com/w3c/vc-jose-cose/pull/186
+21:15 <brent> subtopic: https://github.com/w3c/vc-jose-cose/pull/186
+21:16 <GregB> selfissued: PR 186. Objections from me and Manu. It wants to pull out media types. Chose these as a working group. Could they be changed in future.
+21:16 <manu> q+
+21:16 * Zakim sees manu on the speaker queue
+21:16 <brent> q+
+21:16 * Zakim sees manu, brent on the speaker queue
+21:16 <GregB> selfissued: Would like to move this to post CR status.
+21:16 <brent> ack manu
+21:16 * Zakim sees brent on the speaker queue
+21:16 <GregB> manu: +1 to what Mike said.
+21:17 * dlongley is this the same issue that Ted planned to raise an alternative PR for ... does anyone remember? i don't see any minutes in the PR about it.
+21:17 <brent> ack brent
+21:17 * Zakim sees no one on the speaker queue
+21:17 <GregB> selfissued: two related issues from this PR. Will mark as post CR.
+21:18 <GregB> brent: In light of those issues do we need to keep this PR open.
+21:18 <GregB> brent: Would it be best to just close this PR?
+21:18 <GregB> selfissued: Very good.
+21:19 <DavidC> q+
+21:19 * Zakim sees DavidC on the speaker queue
+21:19 <GregB> selfissued: observation, once merge/close PR. Have zero before CR. Should be in position to move to CR.
+21:19 <manu> q+
+21:19 * Zakim sees DavidC, manu on the speaker queue
+21:19 <brent> ack DavidC
+21:19 * Zakim sees manu on the speaker queue
+21:19 <GregB> selfissued: Would like to move.
+21:20 <GregB> DavidC: would like to raise about the title of the document
+21:20 <GregB> DavidC: there is an issue about selective disclosure. There is a IETF SD-JWT doc that doesn't apply to VCs
+21:21 <GregB> DavidC: Don't have SD in the title.
+21:21 <selfissued_> q+
+21:21 * Zakim sees manu, selfissued_ on the speaker queue
+21:21 <brent> ack manu
+21:21 * Zakim sees selfissued_ on the speaker queue
+21:21 <GregB> DavidC: How would people know it supports SD.
+21:21 <GregB> manu: Where are we on controller doc stuff?
+21:22 <GregB> manu: Are we waiting on controller document stuff to move into CR
+21:22 <GregB> manu: Normative versus Non-normative, Who's read the spec?
+21:22 <brent> ack selfissued_
+21:22 * Zakim sees no one on the speaker queue
+21:23 <selfissued_> https://github.com/w3c/vc-jose-cose/issues/191
+21:24 <GregB> selfissued: Doc title--simple general titles better than longer titles, example VC DI. Similarly don't want the title more complicated.
+21:24 <DavidC> q+
+21:24 * Zakim sees DavidC on the speaker queue
+21:24 <GregB> selfissued: Who's read -- I've done a full pass, I'm comfortable that the normative text is correct.
+21:25 <GregB> selfissued: controller doc: my understanding for DI weren't going to do the Controller Doc work till after CR. Then work with Manu.
+21:25 <manu> q+
+21:25 * Zakim sees DavidC, manu on the speaker queue
+21:25 <brent> ack DavidC
+21:25 * Zakim sees manu on the speaker queue
+21:26 <decentralgabe> I've read it too :)
+21:26 <GregB> DavidC: I've read various versions of the document at various times. Each time raised issues. I need to do a read now.
+21:26 <GregB> DavidC: Already have a issue that selective disclosure not well defined.
+21:26 <brent> ack manu
+21:26 * Zakim sees no one on the speaker queue
+21:27 <GregB> manu: Have we responded to the PINGs review, same for TAG review
+21:27 <decentralgabe> q+
+21:27 * Zakim sees decentralgabe on the speaker queue
+21:27 <GregB> selfissued: I don't know. Worked on it at the time at TPAC.
+21:27 <brent> ack decentralgabe
+21:27 * Zakim sees no one on the speaker queue
+21:27 <decentralgabe> https://github.com/w3c/vc-jose-cose/issues/192
+21:28 <GregB> gabe: PING review one issue. Mike responded. Doesn't look like it has substantive changes
+21:28 <selfissued_> q+
+21:28 * Zakim sees selfissued_ on the speaker queue
+21:28 <GregB> brent: might be premature to go into CR at this time.
+21:28 <brent> ack selfissued_
+21:28 * Zakim sees no one on the speaker queue
+21:30 <GregB> q+
+21:30 * Zakim sees GregB on the speaker queue
+21:30 <brent> ack GregB
+21:30 * Zakim sees no one on the speaker queue
+21:30 <manu> scribe+
+21:30 * manu :)
+21:31 <selfissued_> q+
+21:31 * Zakim sees selfissued_ on the speaker queue
+21:31 <manu> GregB: on vc-di-bbs, we have put in review requests for horizontal review to a11y, i18n, security, privacy, and TAG. We have closed most of the "ancient" issues. We've incorporated a maintainer that hadn't been there. Security and privacy sections ahve been updated. Privacy section is quite thorough on unlinkability properties... David Waite had one item that he wanted to have said, we're trying to catch this up w/ the other suits.
+21:31 <brent> ack selfissued_
+21:31 * Zakim sees no one on the speaker queue
+21:32 <manu> q+
+21:32 * Zakim sees manu on the speaker queue
+21:33 <brent> ack manu
+21:33 * Zakim sees no one on the speaker queue
+21:33 <GregB> manu: special topic call yesterday, processed all VC data model PRs. Please provide feedback ASAP. All pre CR issues.
+21:34 <GregB> manu: for DI spec have not pulled in all items. Will need to go through another CR.
+21:34 <GregB> manu: Bitstring status will try to drive to CR in Feb
+21:36 <GregB> brent: Before CR PRs don't gain concensus. Then will look at issues and close or defer
+21:36 <brent> Topic: Issue Discussion
+21:36 * manu likes the "hanging axe" approach brent just mentioned :)
+21:36 <brent> https://github.com/w3c/vc-data-model/issues?q=is%3Aissue+is%3Aopen+label%3Abefore-CR+sort%3Aupdated-asc
+21:37 <brent> subtopic: https://github.com/w3c/vc-data-model/issues/1337
+21:37 *** DavidC_ (~DavidC@c080ddbb.public.cloak) has joined the channel
+21:37 <DavidC_> present+
+21:37 <GregB> brent: 1337 Define Alg for Verify. Main PR has been merged. I will close after call today.
+21:37 <brent> subtopic: https://github.com/w3c/vc-data-model/issues/1365
+21:38 <GregB> brent: 1365 Clarify section on VC graph. Has PR 1390. Status: wide array of approvals, some ed.  Most likely to be merged soon. Then will close.
+21:38 <brent> subtopic: https://github.com/w3c/vc-data-model/issues/1384
+21:39 *** DavidC (~DavidC@c080ddbb.public.cloak) has quit (Ping timeout: 180 seconds)
+21:39 <GregB> brent: 1384 Ext to problems details object. PR 1391 addresses it. Wide array of approvals and a few eds. Expect to be merged soon, once merged will be closed
+21:40 <brent> subtopic: https://github.com/w3c/vc-data-model/issues/1386
+21:41 <GregB> brent: 1386 Important to validate issuer, Oliver Terbu issuer validation; Open PR, not clearly on a path towards concensus
+21:41 <manu> q+
+21:41 * Zakim sees manu on the speaker queue
+21:41 <GregB> brent: not clear that is isn't going to happen.
+21:41 <brent> ack manu
+21:41 * Zakim sees no one on the speaker queue
+21:41 <GregB> manu: Mike the change you want. Is that proof needs to be removed by the alg.
+21:41 * andres apologizes because he has to step out. Is excited about getting close to the finish line!
+21:42 <GregB> manu: The way DI works is that proof options are secured too
+21:42 <dlongley> q+ to say that envelopes are different from embedded proofs
+21:42 * Zakim sees dlongley on the speaker queue
+21:42 <GregB> selfissued: don't want to return JWS parameters and proof?
+21:42 <GregB> manu: any info that is secured gets returned back
+21:42 <DavidC_> q+
+21:42 * Zakim sees dlongley, DavidC_ on the speaker queue
+21:42 <GregB> manu: might get us back into layer violation teritory
+21:43 <brent> ack dlongley
+21:43 <Zakim> dlongley, you wanted to say that envelopes are different from embedded proofs
+21:43 * Zakim sees DavidC_ on the speaker queue
+21:43 <selfissued_> q+
+21:43 * Zakim sees DavidC_, selfissued_ on the speaker queue
+21:43 <brent> ack DavidC_
+21:43 * Zakim sees selfissued_ on the speaker queue
+21:43 <GregB> dlongley: We do have two different types of mechanisms (i) envelopes and (ii) embedded proofs. These do behave differently.
+21:44 <GregB> DavidC: Take a credential -> VC -> credential you don't have the proof.
+21:44 <brent> ack selfissued_
+21:44 * Zakim sees no one on the speaker queue
+21:44 <manu> q+
+21:44 * Zakim sees manu on the speaker queue
+21:45 <dlongley> q+ to say that i think that embedded mechanisms can do either of these -- and if we want to clearly say that you can ask for either, that's fine
+21:45 * Zakim sees manu, dlongley on the speaker queue
+21:45 <GregB> selfissued: Aligned with DavidC. More of a layer violation if you get different result
+21:45 <GregB> selfissued: request to David a change to PR asking for this
+21:45 <brent> ack manu
+21:45 * Zakim sees dlongley on the speaker queue
+21:46 <GregB> manu: This PR is about issuer validation, the thing you are requesting is something else
+21:46 <GregB> manu: Doesn't have to do with proof being returned.
+21:46 <brent> ack dlongley
+21:46 <Zakim> dlongley, you wanted to say that i think that embedded mechanisms can do either of these -- and if we want to clearly say that you can ask for either, that's fine
+21:46 * Zakim sees no one on the speaker queue
+21:47 <GregB> dlongley: Okay to return proof. Valuable to implementers. Considerations for multi-proof. And digital wallets.
+21:47 <GregB> brent: encourage to the PR and what its trying to request.
+21:47 <selfissued_> q+
+21:47 * Zakim sees selfissued_ on the speaker queue
+21:48 <brent> ack selfissued_
+21:48 * Zakim sees no one on the speaker queue
+21:48 <DavidC_> I have submitted issue #1399
+21:48 <dlongley> `proof` is *in the credential*, that's what embedding is though.
+21:48 *** andres (~andres@c080ddbb.public.cloak) has quit (Ping timeout: 180 seconds)
+21:49 <GregB> selfissued: it is not independent. See the text of the PR. This interface returns information in the credential.
+21:49 <manu> q+
+21:49 * Zakim sees manu on the speaker queue
+21:49 <manu> q-
+21:49 * Zakim sees no one on the speaker queue
+21:49 <brent> ack manu
+21:49 * Zakim sees no one on the speaker queue
+21:49 <brent> subtopic: https://github.com/w3c/vc-data-model/issues/1398
+21:49 <manu> q+
+21:49 * Zakim sees manu on the speaker queue
+21:50 <GregB> brent: Issue 1398 credential status id field is optional. Required id property not necessary.
+21:50 <manu> q-
+21:50 * Zakim sees no one on the speaker queue
+21:50 <GregB> manu: I'll raise the PR. Its fairly straightforward.
+21:50 * dlongley think positive!
+21:50 * TallTed makes a note to find controversy...
+21:50 <brent> subtopic: https://github.com/w3c/vc-data-model/issues/1388
+21:51 <manu> q+
+21:51 * Zakim sees manu on the speaker queue
+21:51 <selfissued_> q+
+21:51 * Zakim sees manu, selfissued_ on the speaker queue
+21:51 <GregB> brent: Issue 1388 Specify what kind of processing is safe on a returned document PR 1392 has been raised. PR has requested changes
+21:51 <brent> ack manu
+21:51 * Zakim sees selfissued_ on the speaker queue
+21:52 <GregB> manu: Mike is requesting changes since text is not actionable. Need to hear from Jeffery.
+21:52 <brent> ack selfissued_
+21:52 * Zakim sees no one on the speaker queue
+21:52 <manu> q+
+21:52 * Zakim sees manu on the speaker queue
+21:52 <GregB> selfissued: Yeah, I kinda agree with Manu's assesment. I'm fine if we develop concrete text.
+21:52 * dlongley has to drop a bit early today ... merry christmas / happy holidays to all and see you in the new year!
+21:53 <brent> ack manu
+21:53 * Zakim sees no one on the speaker queue
+21:53 <GregB> manu: One thing to note is this text is for specification authors. Guidance to specification authors on what is a acceptable cryptosuite.
+21:54 <brent> subtopic: https://github.com/w3c/vc-data-model/issues/1377
+21:54 <selfissued_> PR 1397 is also about this
+21:54 <GregB> brent: Issue 1377 a number of PRs 1393, 1394. 1394 has a number of approvals. Though some comments. 1393 not as clear. Already discussed
+21:55 <GregB> brent: a number of PRs are in a good place likely to be merged soon. Some are not. PRs would be closed and issues closed or deferred
+21:55 <selfissued_> q+
+21:55 * Zakim sees selfissued_ on the speaker queue
+21:56 <GregB> brent: Expressing gratitude to all
+21:56 <manu> Yes, thank you to everyone for the work and passion they've put into the work! Happy Holidays! Happy New Year! :)
+21:56 *** decentralgabe (~decentralgabe@c080ddbb.public.cloak) has quit (Ping timeout: 180 seconds)
+21:56 <pdl_asu> +1 to Brent's expression of thankfulness ;-)
+21:56 <brent> ack selfissued_
+21:56 * Zakim sees no one on the speaker queue
+21:56 <DavidC_> +1
+21:57 <brent> zakim, who is here?
+21:57 <Zakim> Present: brent, cabernet, decentralgabe, selfissued_, pauld_gs, DavidC, GregB, manu, dlongley, cabernet_, dlehn, TallTed, andres, DavidC_
+21:57 <Zakim> On IRC I see TallTed, cabernet_, pauld_gs1, selfissued_, RRSAgent, Zakim, brent, dlehn, enick_708, cel, AnthonySpencer, jyasskin, manu, Github, npd, bumblefudge1, seabass,
+21:57 <Zakim> ... MojGraph, saysaywhat, bumblefudge, ounfacdo, cel[m], joraboi445, SintayewGashaw, cel[h], w3c_modbot, ivan, rbyers, dlongley, hadleybeeman, stenr, shigeya, bigbluehat, csarven,
+21:57 <Zakim> ... rhiaro
+21:57 <brent> zakim, close the meeting
+21:57 <Zakim> I don't understand 'close the meeting', brent
+21:57 <TallTed> RRSAgent, draft minutes
+21:57 <brent> zakim, end the meeting
+21:57 <Zakim> As of this point the attendees have been brent, cabernet, decentralgabe, selfissued_, pauld_gs, DavidC, GregB, manu, dlongley, cabernet_, dlehn, TallTed, andres, DavidC_
+21:57 *** cabernet_ (~cabernet@c080ddbb.public.cloak) has quit ("Page closed")
+21:57 <Zakim> RRSAgent, please draft minutes
+21:57 <brent> rrsagent, bye
+21:57 <Zakim> I am happy to have been of service, brent; please remember to excuse RRSAgent.  Goodbye
+21:57 <RRSAgent> I have made the request to generate https://www.w3.org/2023/12/20-vcwg-minutes.html TallTed
+21:57 <TallTed> RRSAgent, make logs public
+21:57 *** Zakim (zakim@6492c3ce.team.cloak) has left the channel
+21:57 <RRSAgent> I have made the request to generate https://www.w3.org/2023/12/20-vcwg-minutes.html Zakim
+21:57 <RRSAgent> I see no action items
+21:57 *** RRSAgent (rrsagent@6492c3ce.team.cloak) has left the channel
+21:57 <RRSAgent> I have made the request, TallTed

@@ -25,6 +25,7 @@ program
     .usage('[options] [file]')
     .option('-d, --date [date]', 'date of the meeting in ISO (i.e., YYYY-MM-DD) format')
     .option('-g, --group [group_name]', 'groups; values are the respective irc handles')
+    .option('-l, --lounge', 'Use the Lounge log')
     .option('-t, --textual', 'Use the Textual log instead of the downloaded one')
     .option('-i, --irccloud', 'Use the IRCCloud log instead of the downloaded one')
     .option('-r, --rdf', 'Use the RDF log instead of the downloaded one')
@@ -64,6 +65,9 @@ const input = ((): string => {
     } else if (options.rdf) {
         command = `${command} -i rdf`;
         return `${HOME}/W3C/WWW/${year}/${month}/${day}-${options.group}-irc.rdf`;
+    } else if (options.lounge) {
+        command = `${command} -i lounge`;
+        return `${HOME}/W3C/WWW/${year}/${month}/${day}-${options.group}-irc-lounge.txt`;
     } else {
         return `${HOME}/W3C/WWW/${year}/${month}/${day}-${options.group}-irc.txt`;
     }

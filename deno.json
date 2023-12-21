@@ -1,6 +1,7 @@
 {
   "tasks": {
     "test": "deno run -A main.ts -j 'kd' -g epub -c test/config.json test/12-epub-irc.txt",
+    "test-l": "deno run -A main.ts -j 'kd' -i lounge -g vcwg -c test/config-vc.json test/lounge.txt",
     "test-d": "scribejs-d -j 'kd' -g epub -c test/config.json test/12-epub-irc.txt",
     "test-m": "(cd LocalScript; deno run -A minutes.ts -g vcwg -d 2023-11-01)",
     "compile": "deno compile -A main.ts; (cd LocalScript; deno compile -A -o minutes-d minutes.ts)",

@@ -39,6 +39,9 @@ export function url_to_issue_directive(the_line: string): string {
         // if there are more than two words, no change
         if (words.length > 2) {
             return the_line;
+        } else if (words.length === 1) {
+            console.log(`Missing topic content in ${the_line} (forgot a space?)`);
+            return the_line;
         } else {
             // Now we can check whether this is an issue URL
             const is_issue = get_issue_reference(words[1]);

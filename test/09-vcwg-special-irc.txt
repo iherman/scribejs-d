@@ -40,7 +40,7 @@
 16:11:08 <manu> q-
 16:11:44 <will> selfissued: over the hols manu and DavidC did thorough review. Resulting in some issues to address
 16:12:00 <will> ... A couple need some VG discussion to proceed
-16:12:23 <ivan> subtopic: https://github.com/w3c/vc-jose-cose/issues/201
+16:12:23 <ivan> subtopic:https://github.com/w3c/vc-jose-cose/issues/201
 16:13:04 <will> ... this issue asks us to reinstate signing of jose jwt
 16:13:07 <will> jws
 16:13:22 <will> ... Currently the signing method in the spec is sd-jwt
